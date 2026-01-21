@@ -1,74 +1,56 @@
+import React, { useState, useEffect } from 'react';
+import { Gate } from './components/Gate';
+import { Sanctuary } from './components/Sanctuary';
+import { UserMode } from './types';
 
-import React, { useRef, useState } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import AboutSection from './components/WhyPlacemein';
-import HowItWorks from './components/HowItWorks';
-import Offerings from './components/Offerings';
-import Roles from './components/Roles';
-import ContactForm from './components/ContactForm';
-import FAQ from './components/FAQ';
-import Footer from './components/Footer';
-import { Audience } from './types';
+const ALIYA_KEY = "Bunnylovesme";
+const ADMIN_KEY = "Aliyalovesme";
+const SESSION_KEY = "sanctuary_session_v1";
 
 const App: React.FC = () => {
-  const contactRef = useRef<HTMLElement>(null);
-  const howItWorksRef = useRef<HTMLElement>(null);
-  
-  // Lifted state to coordinate Hero, AboutSection (Dynamic Media), and ContactForm
-  const [activePersonaId, setActivePersonaId] = useState<string>('student');
-  const [selectedAudience, setSelectedAudience] = useState<Audience>(Audience.Students);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [userMode, setUserMode] = useState<UserMode>('Aliya');
+  const [checkingSession, setCheckingSession] = useState(true);
 
-  const scrollToContact = () => {
-    contactRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-  
-  const scrollToHowItWorks = () => {
-    howItWorksRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  // Maps the Hero persona ID to the correct Form Audience and scrolls
-  const handleHeroCtaClick = () => {
-    switch (activePersonaId) {
-      case 'student':
-        setSelectedAudience(Audience.Students);
-        break;
-      case 'corporate':
-        setSelectedAudience(Audience.Corporates);
-        break;
-      case 'college':
-        setSelectedAudience(Audience.Colleges);
-        break;
-      case 'institute':
-        setSelectedAudience(Audience.Institutes);
-        break;
-      default:
-        setSelectedAudience(Audience.Students);
+  useEffect(() => {
+    const savedSession = localStorage.getItem(SESSION_KEY);
+    if (savedSession) {
+      try {
+        const parsed = JSON.parse(savedSession);
+        if (parsed.mode) {
+          setUserMode(parsed.mode);
+          setIsUnlocked(true);
+        }
+      } catch (e) {
+        localStorage.removeItem(SESSION_KEY);
+      }
     }
-    scrollToContact();
+    setCheckingSession(false);
+  }, []);
+
+  const handleUnlock = (password: string) => {
+    let mode: UserMode | null = null;
+
+    if (password.toLowerCase() === ALIYA_KEY.toLowerCase()) {
+      mode = 'Aliya';
+    } else if (password.toLowerCase() === ADMIN_KEY.toLowerCase()) {
+      mode = 'Admin';
+    }
+
+    if (mode) {
+      setUserMode(mode);
+      setIsUnlocked(true);
+      localStorage.setItem(SESSION_KEY, JSON.stringify({ mode }));
+    }
   };
+
+  if (checkingSession) return null;
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      <Header onGetInTouchClick={scrollToContact} />
-      <main>
-        <Hero 
-          activeTab={activePersonaId}
-          setActiveTab={setActivePersonaId}
-          onGetInTouchClick={handleHeroCtaClick} 
-          onHowItWorksClick={scrollToHowItWorks}
-        />
-        {/* AboutSection now receives the active persona to show dynamic media */}
-        <AboutSection activePersonaId={activePersonaId} />
-        <HowItWorks ref={howItWorksRef} />
-        <Offerings />
-        <Roles />
-        {/* ContactForm receives the pre-selected audience */}
-        <ContactForm ref={contactRef} selectedAudience={selectedAudience} />
-        <FAQ />
-      </main>
-      <Footer />
-    </div>
+    <>
+      {!isUnlocked && <Gate onUnlock={handleUnlock} />}
+      {isUnlocked && <Sanctuary userMode={userMode} />}
+    </>
   );
 };
 

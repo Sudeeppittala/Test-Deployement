@@ -1,5 +1,7 @@
 {
-  "name": "Placemein: Tech Career Placements V2.4",
-  "description": "Placemein connects colleges, students, and corporations to streamline tech placements. We provide managed training, interview opportunities, and pre-screened talent.",
-  "requestFramePermissions": []
+  "name": "Bunny and Boo's Space",
+  "description": "A private, minimalist digital presence app for Bunny & Boo.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
 }
