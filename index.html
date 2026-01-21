@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Placemein | The Hiring Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              // Mapping serif to Inter as well to enforce the new design language without breaking existing class references
+              serif: ['Inter', 'sans-serif'], 
+            },
+            colors: {
+              primary: {
+                DEFAULT: '#4B0082', // Deep Purple
+                dark: '#2e0052',
+                light: '#F3E8FF',
+              },
+              accent: {
+                DEFAULT: '#FFC107', // Amber Gold
+                light: '#FFD54F',
+              },
+              slate: {
+                50: '#F9FAFB', 
+                900: '#111827',
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body {
+        background-color: #F9FAFB;
+        color: #111827;
+        font-family: 'Inter', sans-serif;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+      .active-card {
+        border-color: #4B0082 !important;
+        border-width: 1px !important;
+        background-color: #FFFFFF !important;
+        box-shadow: 0 20px 40px -10px rgba(75, 0, 130, 0.1);
+        transform: scale(1.005);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+</head>
+  <body class="selection:bg-primary/20 selection:text-primary-dark">
+    <div id="root"></div>
+  </body>
+</html>
