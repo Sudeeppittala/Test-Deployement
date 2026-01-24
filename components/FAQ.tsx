@@ -21,11 +21,11 @@ const FAQ: React.FC = () => {
   return (
     <section className="py-32 px-6 bg-white border-t border-gray-100">
       <div className="container mx-auto max-w-3xl">
-        <h2 className="font-serif text-4xl text-slate-900 text-center mb-16">Questions?</h2>
+        <h2 className="font-sans font-bold tracking-tight text-4xl text-slate-900 text-center mb-16">Questions?</h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <AccordionItem key={index} title={faq.question}>
-              <p className="text-lg text-gray-500 font-light leading-relaxed">{faq.answer}</p>
+              <p className="text-lg text-gray-500 font-medium leading-relaxed">{faq.answer}</p>
             </AccordionItem>
           ))}
         </div>
@@ -35,4 +35,3 @@ const FAQ: React.FC = () => {
 };
 
 export default FAQ;
-

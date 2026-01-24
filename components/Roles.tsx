@@ -43,15 +43,15 @@ const Roles: React.FC = () => {
   return (
     <section className="py-32 px-6 bg-slate-50 border-y border-gray-200 relative">
       <div className="container mx-auto text-center">
-        <h2 className="font-serif text-4xl md:text-5xl text-slate-900 mb-6">Roles We Source</h2>
-        <p className="text-xl text-gray-500 mb-16 max-w-2xl mx-auto font-light">
+        <h2 className="font-sans font-bold tracking-tight text-4xl md:text-5xl text-slate-900 mb-6">Roles We Source</h2>
+        <p className="text-xl text-gray-500 mb-16 max-w-2xl mx-auto font-medium">
           Tap on any role to see what it takes to get hired.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 text-left max-w-6xl mx-auto">
           {rolesData.map((category) => (
             <div key={category.category}>
-              <h3 className="text-lg font-bold uppercase tracking-widest text-primary mb-6 border-b border-primary/10 pb-2">{category.category}</h3>
+              <h3 className="text-sm font-black uppercase tracking-[0.2em] text-primary mb-6 border-b border-primary/10 pb-2">{category.category}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.roles.map((role) => (
                   <Pill key={role} onClick={() => setSelectedRole({ category: category.category, role: role })}>

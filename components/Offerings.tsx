@@ -38,7 +38,7 @@ const CheckIcon = () => (
 
 const OfferingCard: React.FC<{ title: string; points: string[] }> = ({ title, points }) => (
   <div className="bg-white p-10 rounded-xl border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-500">
-    <h3 className="text-3xl font-serif text-slate-900 mb-8">{title}</h3>
+    <h3 className="text-3xl font-sans font-bold tracking-tight text-slate-900 mb-8">{title}</h3>
     <ul className="space-y-4">
       {points.map((point, index) => (
         <li key={index} className="flex items-start">
@@ -54,7 +54,7 @@ const Offerings: React.FC = () => {
   return (
     <section className="py-32 px-6 bg-white">
       <div className="container mx-auto">
-        <h2 className="font-serif text-4xl md:text-5xl text-slate-900 text-center mb-20">
+        <h2 className="font-sans font-bold tracking-tight text-4xl md:text-5xl text-slate-900 text-center mb-20">
           Tailored Solutions
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

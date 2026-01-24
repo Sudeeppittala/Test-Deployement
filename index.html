@@ -17,6 +17,9 @@
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
               serif: ['Inter', 'sans-serif'], 
+              // Standardizing on Inter for everything
+              display: ['Inter', 'sans-serif'],
+              body: ['Inter', 'sans-serif'],
             },
             colors: {
               primary: {
@@ -62,6 +65,12 @@
         background-color: #F9FAFB;
         color: #111827;
         font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      /* CRITICAL: Ensure form elements inherit the font family */
+      input, textarea, button, select {
+        font-family: inherit;
       }
       .glass-panel {
         background: rgba(255, 255, 255, 0.9);
@@ -89,9 +98,8 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="selection:bg-primary/20 selection:text-primary-dark">
+  <body class="selection:bg-primary/20 selection:text-primary-dark font-sans">
     <div id="root"></div>
-    <!-- Use relative path for the module entry -->
     <script type="module" src="index.tsx"></script>
   <script type="module" src="/index.tsx"></script>
 </body>
