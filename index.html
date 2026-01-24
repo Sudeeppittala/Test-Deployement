@@ -16,7 +16,6 @@
           extend: {
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
-              // Mapping serif to Inter as well to enforce the new design language without breaking existing class references
               serif: ['Inter', 'sans-serif'], 
             },
             colors: {
@@ -92,6 +91,8 @@
 </head>
   <body class="selection:bg-primary/20 selection:text-primary-dark">
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+    <!-- Use relative path for the module entry -->
+    <script type="module" src="index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
 </html>
