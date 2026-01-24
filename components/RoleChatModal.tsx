@@ -154,10 +154,10 @@ const RoleChatModal: React.FC<RoleChatModalProps> = ({ role, category, onClose }
         {/* Header */}
         <div className="bg-slate-50 p-8 border-b border-gray-100 flex justify-between items-start">
           <div>
-             <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest rounded-full mb-3">
+             <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-black uppercase tracking-widest rounded-full mb-3">
                {category}
              </div>
-             <h3 className="font-serif text-4xl text-slate-900">{role}</h3>
+             <h3 className="font-sans font-bold tracking-tight text-4xl text-slate-900">{role}</h3>
           </div>
           <button 
             onClick={onClose}
@@ -171,18 +171,18 @@ const RoleChatModal: React.FC<RoleChatModalProps> = ({ role, category, onClose }
         <div className="p-8 overflow-y-auto">
           
           <div className="mb-10">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">What you'll do</h4>
-            <p className="text-lg text-slate-600 leading-relaxed font-light">
+            <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">What you'll do</h4>
+            <p className="text-lg text-slate-600 leading-relaxed font-medium">
               {data.description}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-10 mb-10">
              <div>
-                <h4 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">Key Skillset</h4>
+                <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">Key Skillset</h4>
                 <div className="flex flex-wrap gap-2">
                   {data.skills.map((skill, i) => (
-                    <span key={i} className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium border border-slate-200">
+                    <span key={i} className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold border border-slate-200">
                       {skill}
                     </span>
                   ))}
@@ -191,15 +191,15 @@ const RoleChatModal: React.FC<RoleChatModalProps> = ({ role, category, onClose }
              
              <div className="space-y-6">
                 <div>
-                  <h4 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-2">Market Demand</h4>
+                  <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Market Demand</h4>
                   <div className="flex items-center gap-2">
                     <div className={`h-3 w-3 rounded-full ${data.demand === 'Very High' || data.demand === 'Explosive' ? 'bg-green-500' : 'bg-primary'}`}></div>
-                    <span className="text-slate-900 font-serif text-xl">{data.demand}</span>
+                    <span className="text-slate-900 font-sans font-bold text-xl tracking-tight">{data.demand}</span>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-2">Avg. Salary (Entry-Mid)</h4>
-                  <span className="text-slate-900 font-serif text-xl">{data.salary}</span>
+                  <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Avg. Salary (Entry-Mid)</h4>
+                  <span className="text-slate-900 font-sans font-bold text-xl tracking-tight">{data.salary}</span>
                 </div>
              </div>
           </div>
@@ -208,7 +208,7 @@ const RoleChatModal: React.FC<RoleChatModalProps> = ({ role, category, onClose }
 
         {/* Footer */}
         <div className="p-6 border-t border-gray-100 bg-slate-50 flex justify-end">
-           <Button onClick={onClose} variant="primary" className="w-full md:w-auto px-8 rounded-xl">
+           <Button onClick={onClose} variant="primary" className="w-full md:w-auto px-8 rounded-xl font-bold">
              Got it
            </Button>
         </div>
