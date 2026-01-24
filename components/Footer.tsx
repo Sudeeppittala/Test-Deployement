@@ -47,7 +47,14 @@ const Footer: React.FC = () => {
             </div>
             <div className="mt-8">
                <div className="text-[10px] text-slate-600 font-bold uppercase tracking-widest mb-2">Office Headquarters</div>
-               <div className="text-sm text-slate-400 font-medium">Cyber Hub, Building 8, Gurugram, India</div>
+               <a 
+                 href="https://maps.app.goo.gl/hNT14MfyUd1co1R89" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="text-sm text-slate-400 font-medium hover:text-white transition-colors block leading-relaxed"
+               >
+                 Placemein, 5th Floor, APHB Colony, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032
+               </a>
             </div>
           </div>
         </div>
