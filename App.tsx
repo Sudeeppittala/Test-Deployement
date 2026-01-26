@@ -10,6 +10,11 @@ import StudentsPage from './pages/StudentsPage';
 import CollegesPage from './pages/CollegesPage';
 import HiringPage from './pages/HiringPage';
 import PartnersPage from './pages/PartnersPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
+import CompliancePage from './pages/CompliancePage';
+import PhilosophyPage from './pages/PhilosophyPage';
+import CareersPage from './pages/CareersPage';
 
 const AppContent: React.FC = () => {
   const contactRef = useRef<HTMLElement>(null);
@@ -48,6 +53,14 @@ const AppContent: React.FC = () => {
           <Route path="/colleges" element={<CollegesPage />} />
           <Route path="/hiring" element={<HiringPage />} />
           <Route path="/partners" element={<PartnersPage />} />
+          
+          {/* Legal & Company Pages */}
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/compliance" element={<CompliancePage />} />
+          <Route path="/philosophy" element={<PhilosophyPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+
           {/* Catch all redirect to home */}
           <Route path="*" element={<Home onContactClick={handleScrollToContact} contactRef={contactRef} />} />
         </Routes>
