@@ -6,5 +6,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Matches the repository name exactly as seen in your logs
-  base: '/Test-Deployement/', 
+  base: '/', 
 })
