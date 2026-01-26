@@ -44,10 +44,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="md:col-span-3">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Connect</h4>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white hover:text-slate-950 transition-all">
+              <a href="https://in.linkedin.com/company/placemein" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white hover:text-slate-950 transition-all">
                 <IconLinkedin />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white hover:text-slate-950 transition-all">
+              <a href="https://www.instagram.com/placemein/" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white hover:text-slate-950 transition-all">
                 <IconTwitter />
               </a>
             </div>
