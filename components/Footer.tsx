@@ -1,15 +1,21 @@
 
 import React from 'react';
 import Logo from './Logo';
+import { PageId } from '../types';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (page: PageId) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-slate-950 text-white py-20 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
           <div className="md:col-span-5">
-            {/* Increased height: h-12 (48px) on mobile, h-16 (64px) on desktop */}
-            <Logo variant="footer" className="h-25 md:h-40 w-auto mb-8 opacity-90" />
+            <a href="#/" className="cursor-pointer inline-block">
+              <Logo variant="footer" className="h-25 md:h-40 w-auto mb-8 opacity-90" />
+            </a>
             <p className="text-slate-400 font-medium text-lg leading-relaxed max-w-sm">
               The infrastructure for placement excellence. We bridge the gap between human potential and corporate demand.
             </p>
@@ -18,19 +24,19 @@ const Footer: React.FC = () => {
           <div className="md:col-span-2">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Solutions</h4>
             <ul className="space-y-4 text-slate-500 font-medium text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Managed Drives</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">T&P Outsourcing</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Talent Pipelines</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">90-Day Sprint</a></li>
+              <li><a href="#/colleges" className="hover:text-white transition-colors">Managed Drives</a></li>
+              <li><a href="#/colleges" className="hover:text-white transition-colors">T&P Outsourcing</a></li>
+              <li><a href="#/hiring" className="hover:text-white transition-colors">Talent Pipelines</a></li>
+              <li><a href="#/students" className="hover:text-white transition-colors">90-Day Sprint</a></li>
             </ul>
           </div>
 
           <div className="md:col-span-2">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Company</h4>
             <ul className="space-y-4 text-slate-500 font-medium text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#/" className="hover:text-white transition-colors">Home</a></li>
+              <li><a href="#/partners" className="hover:text-white transition-colors">Partnerships</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Philosophy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
             </ul>
           </div>

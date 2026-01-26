@@ -38,7 +38,7 @@ const CONTENT_MAP: Record<string, ContentData> = {
     stat1Label: "Less Ops Work",
     stat2Value: "500+",
     stat2Label: "Corporate Partners",
-    imageUrl: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1600"
+    imageUrl: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=1600"
   },
   institute: {
     headline: <>Empower your <br/><span className="text-slate-900">curriculum.</span></>,

@@ -1,45 +1,11 @@
+import React from 'react';
 
-import React, { useRef } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import AboutSection from './components/WhyPlacemein';
-import HowItWorks from './components/HowItWorks';
-import Offerings from './components/Offerings';
-import Roles from './components/Roles';
-import ContactForm from './components/ContactForm';
-import FAQ from './components/FAQ';
-import Footer from './components/Footer';
+// This file is deprecated. The main application entry point is ../App.tsx
+// Keeping this file as a placeholder to prevent import errors if it's referenced elsewhere unexpectedly,
+// but it renders nothing.
 
-const App: React.FC = () => {
-  const contactRef = useRef<HTMLElement>(null);
-  const howItWorksRef = useRef<HTMLElement>(null);
-
-  const scrollToContact = () => {
-    contactRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-  
-  const scrollToHowItWorks = () => {
-    howItWorksRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      <Header onGetInTouchClick={scrollToContact} />
-      <main>
-        <Hero 
-          onGetInTouchClick={scrollToContact} 
-          onHowItWorksClick={scrollToHowItWorks}
-        />
-        <AboutSection />
-        <HowItWorks ref={howItWorksRef} />
-        <Offerings />
-        <Roles />
-        <ContactForm ref={contactRef} />
-        <FAQ />
-      </main>
-      <Footer />
-    </div>
-  );
+const DeprecatedApp: React.FC = () => {
+  return null;
 };
 
-export default App;
+export default DeprecatedApp;
