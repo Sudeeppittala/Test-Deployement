@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button';
 import Logo from './Logo';
 
@@ -10,12 +11,13 @@ interface Persona {
   headline: string;
   bullets: string[];
   cta: string;
+  path: string;
 }
 
 const PERSONAS: Persona[] = [
   {
     id: 'student',
-    category: "Get Hired",
+    category: "Job Seekers",
     subtext: "25 interviews. Guaranteed.",
     headline: "Launch your career fast.",
     bullets: [
@@ -23,23 +25,12 @@ const PERSONAS: Persona[] = [
       "90-day sprint training",
       "We fix your portfolio"
     ],
-    cta: "Start Now"
-  },
-  {
-    id: 'corporate',
-    category: "Hire Talent",
-    subtext: "Pre-vetted freshers & pros.",
-    headline: "Build your dream team.",
-    bullets: [
-      "Day-one productive talent",
-      "Zero hiring friction",
-      "Role-specific assessments"
-    ],
-    cta: "Get Talent"
+    cta: "Start Now",
+    path: "/students"
   },
   {
     id: 'college',
-    category: "For Colleges",
+    category: "Colleges",
     subtext: "We manage your placements.",
     headline: "Placement ops on autopilot.",
     bullets: [
@@ -47,11 +38,25 @@ const PERSONAS: Persona[] = [
       "Real-time student dashboards",
       "500+ corporate partners"
     ],
-    cta: "Book Pilot"
+    cta: "Book Pilot",
+    path: "/colleges"
+  },
+  {
+    id: 'corporate',
+    category: "Corporates",
+    subtext: "Pre-vetted freshers & pros.",
+    headline: "Build your dream team.",
+    bullets: [
+      "Day-one productive talent",
+      "Zero hiring friction",
+      "Role-specific assessments"
+    ],
+    cta: "Get Talent",
+    path: "/hiring"
   },
   {
     id: 'institute',
-    category: "For Institutes",
+    category: "Ed-Techs / Institutes",
     subtext: "Plug into our drive network.",
     headline: "More value for students.",
     bullets: [
@@ -59,7 +64,8 @@ const PERSONAS: Persona[] = [
       "Curriculum alignment",
       "Higher placement rates"
     ],
-    cta: "Partner Up"
+    cta: "Partner Up",
+    path: "/partners"
   }
 ];
 
@@ -68,10 +74,20 @@ interface HeroProps {
   setActiveTab: (id: string) => void;
   onGetInTouchClick: () => void;
   onHowItWorksClick: () => void;
+  onLearnMoreClick?: (id: string) => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick }) => {
+const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick, onHowItWorksClick, onLearnMoreClick }) => {
+  const navigate = useNavigate();
   const activePersona = PERSONAS.find(p => p.id === activeTab) || PERSONAS[0];
+
+  const handleLearnMore = () => {
+    if (onLearnMoreClick) {
+      onLearnMoreClick(activeTab);
+    } else {
+      navigate(activePersona.path);
+    }
+  };
 
   return (
     <section className="min-h-screen flex items-center pt-32 pb-24 px-6 lg:px-12 relative overflow-hidden bg-slate-50">
@@ -90,7 +106,7 @@ const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick 
 
         <div className="flex flex-col lg:flex-row gap-8 lg:items-stretch">
           
-          {/* LEFT: Simplified Persona Grid */}
+          {/* LEFT: Persona Selector Grid */}
           <div className="lg:w-5/12 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {PERSONAS.map((p) => (
               <button
@@ -116,8 +132,6 @@ const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick 
           <div className="lg:w-7/12 relative">
             <div className="h-full glass-panel rounded-3xl p-10 md:p-16 flex flex-col justify-center animate-slide-up shadow-2xl shadow-primary/5 relative overflow-hidden" key={activeTab}>
               
-              {/* 3D Logo placed as a premium watermark/element in the background of the card */}
-              {/* Increased opacity from opacity-10 to opacity-20 */}
               <div className="absolute -top-10 -right-10 w-64 h-64 opacity-20 pointer-events-none animate-float">
                 <Logo variant="hero" className="w-full h-full object-contain" />
               </div>
@@ -138,10 +152,17 @@ const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick 
                   ))}
                 </ul>
 
-                <div>
-                  <Button onClick={onGetInTouchClick} className="px-10 py-4 text-lg bg-primary hover:bg-primary-dark text-white rounded-full transition-transform hover:scale-105 shadow-xl shadow-primary/20 font-semibold">
+                <div className="flex flex-col sm:flex-row items-center gap-6">
+                  <Button onClick={onGetInTouchClick} className="w-full sm:w-auto px-10 py-4 text-lg bg-primary hover:bg-primary-dark text-white rounded-full transition-transform hover:scale-105 shadow-xl shadow-primary/20 font-semibold">
                     {activePersona.cta}
                   </Button>
+                  <button 
+                    onClick={handleLearnMore}
+                    className="text-slate-500 font-bold hover:text-primary transition-colors flex items-center gap-2 group"
+                  >
+                    Learn More 
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </button>
                 </div>
               </div>
 

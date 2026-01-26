@@ -1,4 +1,3 @@
-
 import React, { useState, forwardRef, useEffect } from 'react';
 import { Audience } from '../types';
 import Button from './ui/Button';
@@ -28,6 +27,7 @@ const ContactForm = forwardRef<HTMLElement, ContactFormProps>(({ selectedAudienc
       audience: audience,
       name: formData.get('name'),
       email: formData.get('email'),
+      phone: formData.get('phone'),
       organization: formData.get('organization'),
       created_at: new Date().toISOString()
     };
@@ -54,7 +54,7 @@ const ContactForm = forwardRef<HTMLElement, ContactFormProps>(({ selectedAudienc
   };
 
   return (
-    <section className="py-32 px-6 bg-white" ref={ref}>
+    <section className="py-32 px-6 bg-white" ref={ref} id="main-contact-form">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-sans font-bold tracking-tighter text-5xl md:text-6xl text-slate-900 mb-6 leading-tight">
@@ -110,8 +110,13 @@ const ContactForm = forwardRef<HTMLElement, ContactFormProps>(({ selectedAudienc
                 <label className="font-sans text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Email</label>
                 <input required name="email" type="email" placeholder="jane@example.com" className="font-sans w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all font-medium" />
               </div>
+
+              <div className="space-y-2">
+                <label className="font-sans text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Mobile Number</label>
+                <input required name="phone" type="tel" placeholder="+91 98765 43210" className="font-sans w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all font-medium" />
+              </div>
               
-              <div className="space-y-2 md:col-span-2">
+              <div className="space-y-2">
                  <label className="font-sans text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">
                     {audience === Audience.Students ? "College Name" : "Organization"}
                  </label>
