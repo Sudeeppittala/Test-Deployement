@@ -12,10 +12,10 @@ export const BASE_URL = ''; // Leave empty for external URLs
 
 export const BRAND_ASSETS = {
   // Primary horizontal logo (Symbol + Text) - Used in White Header
-  fullPrimary: 'https://res.cloudinary.com/dp9jnvstr/image/upload/v1768817715/logo-full-horizontal-primary_hbs9gw.svg',
+  fullPrimary: 'https://res.cloudinary.com/dp9jnvstr/image/upload/v1768817715/logo-full-horizontal-primary_hbs9gw.png',
   
   // White horizontal logo (Symbol + Text) - Used in Dark Footer
-  fullLight: 'https://res.cloudinary.com/dp9jnvstr/image/upload/v1768817715/logo-full-horizontal-light_plrq7m.svg',
+  fullLight: 'https://res.cloudinary.com/dp9jnvstr/image/upload/v1768817715/logo-full-horizontal-light_plrq7m.png',
   
   // 3D/Metallic Symbol - The floating logo in the Hero section (Use PNG for best results)
   hero3d: 'https://res.cloudinary.com/dp9jnvstr/image/upload/v1768818411/logo-hero-3d_1_oyxssi.png', 
