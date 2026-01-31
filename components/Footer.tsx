@@ -71,7 +71,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                  rel="noopener noreferrer"
                  className="text-sm text-slate-400 font-medium hover:text-white transition-colors block leading-relaxed"
                >
-                 Placemein, 5th Floor, APHB Colony, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032
+                 Placemein.com 5th floor, DLF Cyber City, to, opp. lane, APHB Colony, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032
                </a>
             </div>
           </div>
@@ -79,7 +79,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em]">
-            &copy; 2026 PLACEMEIN OPERATIONS.
+            &copy; 2026 PLACEMEIN HR Solutions
           </div>
           <div className="flex gap-8 text-[10px] text-slate-600 font-bold uppercase tracking-widest">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
