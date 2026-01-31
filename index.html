@@ -16,7 +16,6 @@
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
               serif: ['Inter', 'sans-serif'], 
-              // Standardizing on Inter for everything
               display: ['Inter', 'sans-serif'],
               body: ['Inter', 'sans-serif'],
             },
@@ -35,10 +34,16 @@
                 900: '#111827',
               }
             },
+            transitionTimingFunction: {
+              'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+              'out-back': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            },
             animation: {
-              'fade-in': 'fadeIn 0.5s ease-out',
-              'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+              'fade-in': 'fadeIn 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards',
+              'slide-up': 'slideUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards',
+              'slide-in-right': 'slideInRight 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards',
               'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             keyframes: {
               fadeIn: {
@@ -46,8 +51,12 @@
                 '100%': { opacity: '1' },
               },
               slideUp: {
-                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '0%': { transform: 'translateY(30px)', opacity: '0' },
                 '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              slideInRight: {
+                '0%': { transform: 'translateX(20px)', opacity: '0' },
+                '100%': { transform: 'translateX(0)', opacity: '1' },
               },
               float: {
                 '0%, 100%': { transform: 'translateY(0)' },
@@ -82,6 +91,18 @@
         background-color: #FFFFFF !important;
         box-shadow: 0 20px 40px -10px rgba(75, 0, 130, 0.1);
         transform: scale(1.005);
+      }
+      /* Loading Skeleton Shimmer */
+      .skeleton {
+        background: #f0f0f0;
+        background-image: linear-gradient(to right, #f0f0f0 0%, #f8f8f8 20%, #f0f0f0 40%, #f0f0f0 100%);
+        background-repeat: no-repeat;
+        background-size: 200% 100%; 
+        animation: shimmer 1.5s infinite linear; 
+      }
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
       }
     </style>
   <script type="importmap">
