@@ -31,7 +31,7 @@ const PrivacyPage: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mt-12 mb-6">2. How We Use Your Information</h3>
           <p className="mb-4 text-gray-600">Your data is used exclusively for:</p>
           <ul className="list-disc pl-6 space-y-2 text-gray-600 mb-8">
-            <li>Matching students with relevant job opportunities.</li>
+            <li><strong>Matching students with relevant job opportunities.</strong></li>
             <li>Coordinating placement drives and interview schedules.</li>
             <li>Analyzing placement trends to improve our training programs.</li>
             <li>Communicating updates regarding drives, offers, and training schedules.</li>
@@ -60,7 +60,12 @@ const PrivacyPage: React.FC = () => {
           <div className="bg-slate-50 p-8 rounded-2xl border border-gray-100 mt-12">
             <h4 className="font-bold text-lg text-slate-900 mb-2">Contact Us</h4>
             <p className="text-gray-600 mb-4">For privacy concerns, please reach out to:</p>
-            <p className="font-medium text-slate-900">Placemein Operations<br/>5th Floor, APHB Colony, Indira Nagar<br/>Gachibowli, Hyderabad, Telangana 500032<br/>Email: privacy@placemein.com</p>
+            <p className="font-medium text-slate-900">
+              Placemein Operations<br/>
+              Placemein.com 5th floor, DLF Cyber City, to, opp. lane<br/>
+              APHB Colony, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032<br/>
+              Email: privacy@placemein.com
+            </p>
           </div>
         </div>
       </div>
