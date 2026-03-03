@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ onGetInTouchClick }) => {
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-bold tracking-wide text-slate-600">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-bold tracking-wide text-gray-600">
             {navLinks.map((link) => (
               <Link 
                 key={link.path}
@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ onGetInTouchClick }) => {
 
             {/* Mobile Menu Toggle */}
             <button 
-              className="md:hidden text-slate-600 p-2 hover:text-primary transition-colors"
+              className="md:hidden text-gray-600 p-2 hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -65,13 +65,13 @@ const Header: React.FC<HeaderProps> = ({ onGetInTouchClick }) => {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-white pt-24 px-6 md:hidden animate-fade-in overflow-y-auto">
-          <nav className="flex flex-col space-y-6 text-lg font-bold text-slate-800">
+          <nav className="flex flex-col space-y-6 text-lg font-bold text-gray-800">
             {navLinks.map((link) => (
               <Link 
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`border-b border-gray-100 pb-4 ${currentPath === link.path ? 'text-primary' : 'text-slate-600'}`}
+                className={`border-b border-gray-100 pb-4 ${currentPath === link.path ? 'text-primary' : 'text-gray-600'}`}
               >
                 {link.label}
               </Link>

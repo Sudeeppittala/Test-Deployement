@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button';
@@ -94,12 +93,12 @@ const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick,
       <div className="max-w-7xl mx-auto w-full relative z-10">
         
         {/* Main Headline area */}
-        <div className="mb-20 max-w-4xl relative">
+        <div className="mb-20 max-w-4xl relative animate-fade-in">
           <h1 className="font-sans font-semibold text-6xl md:text-7xl lg:text-8xl text-primary tracking-tight leading-[0.95] mb-6">
             The hiring engine <br/>
             <span className="text-slate-900">for everyone.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-500 max-w-xl font-normal leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-500 max-w-xl font-normal leading-relaxed opacity-0 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             We bridge the gap between education and employment with a seamless, high-performance operational layer.
           </p>
         </div>
@@ -107,29 +106,32 @@ const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick,
         <div className="flex flex-col lg:flex-row gap-8 lg:items-stretch">
           
           {/* LEFT: Persona Selector Grid */}
-          <div className="lg:w-5/12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="lg:w-5/12 grid grid-cols-1 sm:grid-cols-2 gap-4 opacity-0 animate-slide-up" style={{ animationDelay: '0.4s' }}>
             {PERSONAS.map((p) => (
               <button
                 key={p.id}
                 onClick={() => setActiveTab(p.id)}
-                className={`text-left p-8 rounded-2xl transition-all duration-300 border group ${
+                className={`text-left p-8 rounded-2xl transition-all duration-500 ease-out-expo border group relative overflow-hidden ${
                   activeTab === p.id 
                   ? 'active-card' 
-                  : 'bg-white border-transparent hover:border-gray-200'
+                  : 'bg-white border-transparent hover:border-gray-200 hover:shadow-lg hover:-translate-y-1'
                 }`}
               >
-                <div className={`text-xl font-bold mb-2 ${activeTab === p.id ? 'text-primary' : 'text-slate-900'}`}>
+                <div className={`text-xl font-bold mb-2 relative z-10 ${activeTab === p.id ? 'text-primary' : 'text-slate-900'}`}>
                   {p.category}
                 </div>
-                <div className="text-sm text-gray-500 font-medium group-hover:text-gray-700 transition-colors">
+                <div className="text-sm text-gray-500 font-medium group-hover:text-gray-700 transition-colors relative z-10">
                   {p.subtext}
                 </div>
+                {/* Subtle sheen effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </button>
             ))}
           </div>
 
           {/* RIGHT: Dynamic Panel */}
-          <div className="lg:w-7/12 relative">
+          <div className="lg:w-7/12 relative opacity-0 animate-slide-up" style={{ animationDelay: '0.6s' }}>
+            {/* Added key to force re-animation on tab change, but refined the animation class in global css */}
             <div className="h-full glass-panel rounded-3xl p-10 md:p-16 flex flex-col justify-center animate-slide-up shadow-2xl shadow-primary/5 relative overflow-hidden" key={activeTab}>
               
               <div className="absolute -top-10 -right-10 w-64 h-64 opacity-20 pointer-events-none animate-float">
@@ -143,8 +145,8 @@ const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick,
 
                 <ul className="space-y-6 mb-12">
                   {activePersona.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-center gap-4">
-                      <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-accent font-black text-xs">
+                    <li key={i} className="flex items-center gap-4 animate-slide-in-right" style={{ animationDelay: `${0.1 * i}s` }}>
+                      <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-accent font-black text-xs shrink-0">
                         ✓
                       </div>
                       <span className="text-lg text-slate-700 font-medium">{bullet}</span>
@@ -158,7 +160,7 @@ const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick,
                   </Button>
                   <button 
                     onClick={handleLearnMore}
-                    className="text-slate-500 font-bold hover:text-primary transition-colors flex items-center gap-2 group"
+                    className="text-slate-500 font-bold hover:text-primary transition-colors flex items-center gap-2 group p-2 rounded-lg hover:bg-slate-50"
                   >
                     Learn More 
                     <span className="group-hover:translate-x-1 transition-transform">→</span>

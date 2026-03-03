@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Audience } from '../types';
+import ScrollReveal from './ui/ScrollReveal';
 
 const offeringsData = {
   [Audience.Colleges]: {
@@ -37,7 +37,7 @@ const CheckIcon = () => (
 );
 
 const OfferingCard: React.FC<{ title: string; points: string[] }> = ({ title, points }) => (
-  <div className="bg-white p-10 rounded-xl border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-500">
+  <div className="bg-white p-10 rounded-xl border border-gray-100 hover:border-primary/30 hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out-expo h-full">
     <h3 className="text-3xl font-sans font-bold tracking-tight text-slate-900 mb-8">{title}</h3>
     <ul className="space-y-4">
       {points.map((point, index) => (
@@ -54,13 +54,21 @@ const Offerings: React.FC = () => {
   return (
     <section className="py-32 px-6 bg-white">
       <div className="container mx-auto">
-        <h2 className="font-sans font-bold tracking-tight text-4xl md:text-5xl text-slate-900 text-center mb-20">
-          Tailored Solutions
-        </h2>
+        <ScrollReveal>
+          <h2 className="font-sans font-bold tracking-tight text-4xl md:text-5xl text-slate-900 text-center mb-20">
+            Tailored Solutions
+          </h2>
+        </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <OfferingCard title={offeringsData[Audience.Colleges].title} points={offeringsData[Audience.Colleges].points} />
-          <OfferingCard title={offeringsData[Audience.Students].title} points={offeringsData[Audience.Students].points} />
-          <OfferingCard title={offeringsData[Audience.Corporates].title} points={offeringsData[Audience.Corporates].points} />
+          <ScrollReveal delay={0.1} className="h-full">
+            <OfferingCard title={offeringsData[Audience.Colleges].title} points={offeringsData[Audience.Colleges].points} />
+          </ScrollReveal>
+          <ScrollReveal delay={0.2} className="h-full">
+            <OfferingCard title={offeringsData[Audience.Students].title} points={offeringsData[Audience.Students].points} />
+          </ScrollReveal>
+          <ScrollReveal delay={0.3} className="h-full">
+            <OfferingCard title={offeringsData[Audience.Corporates].title} points={offeringsData[Audience.Corporates].points} />
+          </ScrollReveal>
         </div>
       </div>
     </section>

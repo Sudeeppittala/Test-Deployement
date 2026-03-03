@@ -1,6 +1,6 @@
-
 import React from 'react';
 import AccordionItem from './ui/Accordion';
+import ScrollReveal from './ui/ScrollReveal';
 
 const faqs = [
   {
@@ -21,12 +21,16 @@ const FAQ: React.FC = () => {
   return (
     <section className="py-32 px-6 bg-white border-t border-gray-100">
       <div className="container mx-auto max-w-3xl">
-        <h2 className="font-sans font-bold tracking-tight text-4xl text-slate-900 text-center mb-16">Questions?</h2>
+        <ScrollReveal>
+          <h2 className="font-sans font-bold tracking-tight text-4xl text-slate-900 text-center mb-16">Questions?</h2>
+        </ScrollReveal>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} title={faq.question}>
-              <p className="text-lg text-gray-500 font-medium leading-relaxed">{faq.answer}</p>
-            </AccordionItem>
+            <ScrollReveal key={index} delay={index * 0.1} animation="fade-up">
+              <AccordionItem title={faq.question}>
+                <p className="text-lg text-gray-500 font-medium leading-relaxed">{faq.answer}</p>
+              </AccordionItem>
+            </ScrollReveal>
           ))}
         </div>
       </div>

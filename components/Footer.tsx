@@ -9,21 +9,21 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="bg-slate-950 text-white py-20 px-6 border-t border-white/5">
+    <footer className="bg-gray-950 text-white py-20 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
           <div className="md:col-span-5">
             <Link to="/" className="cursor-pointer inline-block">
               <Logo variant="footer" className="h-25 md:h-40 w-auto mb-8 opacity-90" />
             </Link>
-            <p className="text-slate-400 font-medium text-lg leading-relaxed max-w-sm">
+            <p className="text-gray-400 font-medium text-lg leading-relaxed max-w-sm">
               The infrastructure for placement excellence. We bridge the gap between human potential and corporate demand.
             </p>
           </div>
           
           <div className="md:col-span-2">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Solutions</h4>
-            <ul className="space-y-4 text-slate-500 font-medium text-sm">
+            <ul className="space-y-4 text-gray-500 font-medium text-sm">
               <li><Link to="/colleges" className="hover:text-white transition-colors">Managed Drives</Link></li>
               <li><Link to="/colleges" className="hover:text-white transition-colors">T&P Outsourcing</Link></li>
               <li><Link to="/hiring" className="hover:text-white transition-colors">Talent Pipelines</Link></li>
@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           <div className="md:col-span-2">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Company</h4>
-            <ul className="space-y-4 text-slate-500 font-medium text-sm">
+            <ul className="space-y-4 text-gray-500 font-medium text-sm">
               <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
               <li><Link to="/partners" className="hover:text-white transition-colors">Partnerships</Link></li>
               <li><Link to="/philosophy" className="hover:text-white transition-colors">Philosophy</Link></li>
@@ -48,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 href="https://in.linkedin.com/company/placemein" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white hover:text-slate-950 transition-all group"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white hover:text-gray-950 transition-all group"
                 aria-label="LinkedIn"
               >
                 <IconLinkedin />
@@ -57,19 +57,19 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 href="https://www.instagram.com/placemein/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white hover:text-slate-950 transition-all group"
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white hover:text-gray-950 transition-all group"
                 aria-label="Instagram"
               >
                 <IconInstagram />
               </a>
             </div>
             <div className="mt-8">
-               <div className="text-[10px] text-slate-600 font-bold uppercase tracking-widest mb-2">Office Headquarters</div>
+               <div className="text-[10px] text-gray-600 font-bold uppercase tracking-widest mb-2">Office Headquarters</div>
                <a 
                  href="https://maps.app.goo.gl/hNT14MfyUd1co1R89" 
                  target="_blank" 
                  rel="noopener noreferrer"
-                 className="text-sm text-slate-400 font-medium hover:text-white transition-colors block leading-relaxed"
+                 className="text-sm text-gray-400 font-medium hover:text-white transition-colors block leading-relaxed"
                >
                  Placemein.com 5th floor, DLF Cyber City, to, opp. lane, APHB Colony, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032
                </a>
@@ -78,13 +78,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em]">
+          <div className="text-[10px] text-gray-600 font-bold uppercase tracking-[0.2em]">
             &copy; 2026 PLACEMEIN HR Solutions
           </div>
-          <div className="flex gap-8 text-[10px] text-slate-600 font-bold uppercase tracking-widest">
+          <div className="flex gap-8 text-[10px] text-gray-600 font-bold uppercase tracking-widest">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
             <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
             <Link to="/compliance" className="hover:text-white transition-colors">Compliance</Link>
+            <Link to="/admin" className="opacity-0 hover:opacity-50 transition-opacity cursor-default">Admin</Link>
           </div>
         </div>
       </div>

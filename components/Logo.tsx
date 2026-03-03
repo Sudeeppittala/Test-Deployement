@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { getAssetUrl } from '../logoConfig';
 
@@ -7,9 +6,6 @@ export type LogoVariant = 'header' | 'footer' | 'hero' | 'symbol' | 'watermark' 
 interface LogoProps {
   variant?: LogoVariant;
   className?: string;
-  /**
-   * Optional override to force a specific width, useful for responsive designs
-   */
   width?: number | string;
 }
 
@@ -19,10 +15,13 @@ const Logo: React.FC<LogoProps> = ({
   width
 }) => {
   const [hasError, setHasError] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   
   let src = '';
   let alt = 'Placemein';
-  const defaultClasses = 'object-contain select-none pointer-events-none transition-opacity duration-500';
+  
+  // Base classes include opacity transition logic
+  const defaultClasses = `object-contain select-none pointer-events-none transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`;
 
   switch (variant) {
     case 'header':
@@ -42,7 +41,6 @@ const Logo: React.FC<LogoProps> = ({
       alt = 'Placemein Symbol';
       break;
     case 'watermark':
-      // Using metallic or primary symbol for watermarks
       src = getAssetUrl('symbolPrimary'); 
       alt = 'Placemein Watermark';
       break;
@@ -54,7 +52,7 @@ const Logo: React.FC<LogoProps> = ({
       src = getAssetUrl('fullPrimary');
   }
 
-  // Fallback UI if image fails to load
+  // Fallback UI
   if (hasError) {
     const isLight = variant === 'footer' || variant === 'hero';
     const isSymbol = variant === 'symbol' || variant === 'hero' || variant === 'watermark';
@@ -83,6 +81,7 @@ const Logo: React.FC<LogoProps> = ({
       style={width ? { width } : undefined}
       draggable={false}
       onError={() => setHasError(true)}
+      onLoad={() => setIsLoaded(true)}
       loading="lazy"
     />
   );
