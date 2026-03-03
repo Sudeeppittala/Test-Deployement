@@ -15,6 +15,7 @@ import TermsPage from './pages/TermsPage';
 import CompliancePage from './pages/CompliancePage';
 import PhilosophyPage from './pages/PhilosophyPage';
 import CareersPage from './pages/CareersPage';
+import AdminPage from './pages/AdminPage';
 
 const AppContent: React.FC = () => {
   const contactRef = useRef<HTMLElement>(null);
@@ -40,7 +41,7 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-primary/10">
+    <div className="min-h-screen bg-gray-50 text-gray-900 selection:bg-primary/10">
       <ScrollToTop />
       <Header 
         onGetInTouchClick={handleScrollToContact} 
@@ -60,6 +61,7 @@ const AppContent: React.FC = () => {
           <Route path="/compliance" element={<CompliancePage />} />
           <Route path="/philosophy" element={<PhilosophyPage />} />
           <Route path="/careers" element={<CareersPage />} />
+          <Route path="/admin" element={<AdminPage />} />
 
           {/* Catch all redirect to home */}
           <Route path="*" element={<Home onContactClick={handleScrollToContact} contactRef={contactRef} />} />

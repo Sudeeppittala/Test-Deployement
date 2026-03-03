@@ -1,4 +1,34 @@
 
+export interface Job {
+  jobId: string;
+  jobTitle: string;
+  jobType: 'Internship' | 'Full-time';
+  location: string;
+  department: string;
+  stipend: string;
+  duration: string;
+  description: string;
+  requirements: string;
+  deadline: string;
+}
+
+export interface Application {
+  timestamp: string;
+  jobId: string;
+  jobTitle: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  qualification: string;
+  college: string;
+  gradYear: string;
+  location: string;
+  linkedin: string;
+  whyYou: string;
+  resumeLink: string;
+  status: 'New' | 'Shortlisted' | 'Interviewed' | 'Selected' | 'Rejected';
+}
+
 export enum Audience {
   Colleges = 'Colleges',
   Students = 'Students',
