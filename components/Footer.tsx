@@ -16,9 +16,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <Link to="/" className="cursor-pointer inline-block">
               <Logo variant="footer" className="h-25 md:h-40 w-auto mb-8 opacity-90" />
             </Link>
-            <p className="text-gray-400 font-medium text-lg leading-relaxed max-w-sm">
-              The infrastructure for placement excellence. We bridge the gap between human potential and corporate demand.
-            </p>
+          
           </div>
           
           <div className="md:col-span-2">
