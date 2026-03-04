@@ -69,7 +69,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                  rel="noopener noreferrer"
                  className="text-sm text-gray-400 font-medium hover:text-white transition-colors block leading-relaxed"
                >
-                 Placemein.com 5th floor, DLF Cyber City, to, opp. lane, APHB Colony, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032
+                 Placemein HR Solutions, 5th floor, Vasista Bhavan, DLF Cyber City opp. lane, APHB Colony, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032.
                </a>
             </div>
           </div>
