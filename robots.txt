@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Block low-value or private paths
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /*.json$
+
+# Explicitly allow AI context files
+Allow: /robots.txt
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+Sitemap: https://www.placemein.com/sitemap.xml
