@@ -1,0 +1,38 @@
+# Placemein
+
+> Placemein is an AI-driven campus placement and off-campus hiring platform based in Hyderabad, India. It connects colleges, companies, and students to streamline recruitment, placements, and employability outcomes.
+
+## About
+
+Placemein HR Solutions helps colleges automate their placement processes, assists companies in reaching qualified fresh talent across India, and empowers students to get placed faster through structured off-campus drives and training.
+
+- Founded in Hyderabad, Telangana, India
+- Focus: Campus placements, off-campus hiring drives, talent acquisition, EdTech
+- Target users: Training & Placement Officers (TPOs), HR teams, fresh graduates and students
+
+## Core Offerings
+
+- https://www.placemein.com/students
+- https://www.placemein.com/colleges
+- https://www.placemein.com/hiring
+- https://www.placemein.com/partners
+
+## Key Features
+
+- Automated on-campus and off-campus drive management
+- Student assessment and shortlisting tools
+- Recruiter–college matchmaking
+- Placement reporting and analytics for TPOs
+- Bulk communication tools for placement teams
+
+## Contact & Business
+
+- Website: https://www.placemein.com
+- Location: Hyderabad, Telangana, India
+- LinkedIn: https://in.linkedin.com/company/placemein
+
+## Additional Pages
+
+- https://www.placemein.com/privacy
+- https://www.placemein.com/terms
+- https://www.placemein.com/compliance
