@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Placemein</title>
+    <!--
+      GitHub Pages SPA – 404 redirect trick
+      When GitHub Pages serves a 404 (because a direct sub-page URL has no
+      matching static file), this page encodes the path into a query string
+      and redirects to index.html which then restores the original URL via
+      the script in index.html.
+
+      Credit: https://github.com/rafgraph/spa-github-pages
+    -->
+    <script>
+      var segmentCount = 0; // 0 for custom domain (use 1 for username.github.io/repo-name)
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
