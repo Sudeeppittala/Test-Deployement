@@ -1,80 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="google-site-verification" content="lgCxQnqIZUDtUkVpwgH3OuDEJXWraNUmTU1WTz-FiyE" />
+    <!-- Basic meta -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Placemein | The Hiring Engine</title>
+
+    <!-- Google Search Console verification -->
+    <meta name="google-site-verification" content="lgCxQnqIZUDtUkVpwgH3OuDEJXWraNUmTU1WTz-FiyE" />
+
+    <!-- Primary SEO -->
+    <title>Placemein | The Hiring Engine for Tech Placements & Internships</title>
+    <meta
+      name="description"
+      content="Placemein is a hiring engine that connects colleges, students, and companies with structured tech placements, internships, and campus hiring programs."
+    />
+    <meta
+      name="keywords"
+      content="Placemein, hiring engine, tech placements, tech internships, campus hiring, placement services, Hyderabad, engineering placements"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.placemein.com/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="vite.svg" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Placemein" />
+    <meta
+      property="og:title"
+      content="Placemein | The Hiring Engine for Tech Placements & Internships"
+    />
+    <meta
+      property="og:description"
+      content="End-to-end tech placement and internship programs for students, colleges, and companies across India."
+    />
+    <meta property="og:url" content="https://www.placemein.com/" />
+    <!-- Update this image path once you have an OG banner -->
+    <meta
+      property="og:image"
+      content="https://www.placemein.com/images/og-placemein.png"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@placemein" />
+    <meta
+      name="twitter:title"
+      content="Placemein | The Hiring Engine for Tech Placements & Internships"
+    />
+    <meta
+      name="twitter:description"
+      content="Placemein partners with colleges and companies to run high-conversion tech hiring and internship programs."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.placemein.com/images/og-placemein.png"
+    />
+
+    <!-- Tailwind + fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['Inter', 'sans-serif'], 
-              display: ['Inter', 'sans-serif'],
-              body: ['Inter', 'sans-serif'],
+              sans: ["Inter", "sans-serif"],
+              serif: ["Inter", "sans-serif"],
+              display: ["Inter", "sans-serif"],
+              body: ["Inter", "sans-serif"],
             },
             colors: {
               primary: {
-                DEFAULT: '#4B0082', // Placemein Deep Purple
-                dark: '#2E0052',    // Darker shade
-                light: '#F3E8FF',   // Light Lavender
+                DEFAULT: "#4B0082", // Placemein Deep Purple
+                dark: "#2E0052", // Darker shade
+                light: "#F3E8FF", // Light Lavender
               },
               accent: {
-                DEFAULT: '#6A0DAD', // Bright Purple
-                light: '#E9D5FF',   // Lighter accent
+                DEFAULT: "#6A0DAD", // Bright Purple
+                light: "#E9D5FF", // Lighter accent
               },
             },
             transitionTimingFunction: {
-              'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
-              'out-back': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+              "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
+              "out-back": "cubic-bezier(0.34, 1.56, 0.64, 1)",
             },
             animation: {
-              'fade-in': 'fadeIn 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards',
-              'slide-up': 'slideUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards',
-              'slide-in-right': 'slideInRight 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards',
-              'float': 'float 6s ease-in-out infinite',
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              "fade-in": "fadeIn 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+              "slide-up": "slideUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+              "slide-in-right":
+                "slideInRight 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+              float: "float 6s ease-in-out infinite",
+              "pulse-slow":
+                "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
             },
             keyframes: {
               fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
               },
               slideUp: {
-                '0%': { transform: 'translateY(30px)', opacity: '0' },
-                '100%': { transform: 'translateY(0)', opacity: '1' },
+                "0%": { transform: "translateY(30px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
               },
               slideInRight: {
-                '0%': { transform: 'translateX(20px)', opacity: '0' },
-                '100%': { transform: 'translateX(0)', opacity: '1' },
+                "0%": { transform: "translateX(20px)", opacity: "0" },
+                "100%": { transform: "translateX(0)", opacity: "1" },
               },
               float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              }
-            }
-          }
-        }
-      }
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+            },
+          },
+        },
+      };
     </script>
+
     <style>
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
-        background-color: #F9FAFB;
+        background-color: #f9fafb;
         color: #111827;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
-      /* CRITICAL: Ensure form elements inherit the font family */
-      input, textarea, button, select {
+      input,
+      textarea,
+      button,
+      select {
         font-family: inherit;
       }
       .glass-panel {
@@ -83,39 +149,51 @@
         border: 1px solid rgba(0, 0, 0, 0.08);
       }
       .active-card {
-        border-color: #4B0082 !important;
+        border-color: #4b0082 !important;
         border-width: 1px !important;
-        background-color: #FFFFFF !important;
+        background-color: #ffffff !important;
         box-shadow: 0 20px 40px -10px rgba(75, 0, 130, 0.1);
         transform: scale(1.005);
       }
-      /* Loading Skeleton Shimmer */
       .skeleton {
         background: #f0f0f0;
-        background-image: linear-gradient(to right, #f0f0f0 0%, #f8f8f8 20%, #f0f0f0 40%, #f0f0f0 100%);
+        background-image: linear-gradient(
+          to right,
+          #f0f0f0 0%,
+          #f8f8f8 20%,
+          #f0f0f0 40%,
+          #f0f0f0 100%
+        );
         background-repeat: no-repeat;
-        background-size: 200% 100%; 
-        animation: shimmer 1.5s infinite linear; 
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite linear;
       }
       @keyframes shimmer {
-        0% { background-position: -200% 0; }
-        100% { background-position: 200% 0; }
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.23.0",
-    "@remix-run/router": "https://esm.sh/@remix-run/router@1.16.0",
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
-  }
-}
-</script>
-</head>
+
+    <!-- Import map for React / React Router via ESM -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@^19.2.3",
+          "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+          "react/": "https://esm.sh/react@^19.2.3/",
+          "react-router-dom": "https://esm.sh/react-router-dom@6.23.0",
+          "@remix-run/router": "https://esm.sh/@remix-run/router@1.16.0",
+          "vite": "https://esm.sh/vite@^7.3.1",
+          "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+        }
+      }
+    </script>
+  </head>
+
   <body class="selection:bg-primary/20 selection:text-primary-dark font-sans">
     <div id="root"></div>
     <script type="module" src="index.tsx"></script>
