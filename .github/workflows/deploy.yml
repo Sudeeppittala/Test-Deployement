@@ -1,4 +1,3 @@
-
 name: Deploy to GitHub Pages
 
 on:
@@ -33,6 +32,14 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Copy index.html to all SPA routes (for GitHub Pages SEO)
+        run: |
+          mkdir -p dist/students dist/colleges dist/companies dist/careers
+          cp dist/index.html dist/students/index.html
+          cp dist/index.html dist/colleges/index.html
+          cp dist/index.html dist/companies/index.html
+          cp dist/index.html dist/careers/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
