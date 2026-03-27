@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- GitHub Pages SPA Routing Fix -->
+    <!-- This script decodes the path that was encoded by 404.html and restores the correct URL -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location));
+    </script>
+
     <!-- Basic meta -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +24,7 @@
     <meta name="google-site-verification" content="lgCxQnqIZUDtUkVpwgH3OuDEJXWraNUmTU1WTz-FiyE" />
 
     <!-- Primary SEO -->
-    <title>Placemein | The Hiring Engine for Tech Placements & Internships</title>
+    <title>Placemein | The Hiring Engine for Tech Placements &amp; Internships</title>
     <meta
       name="description"
       content="Placemein is a hiring engine that connects colleges, students, and companies with structured tech placements, internships, and campus hiring programs."
@@ -31,14 +46,13 @@
     <meta property="og:site_name" content="Placemein" />
     <meta
       property="og:title"
-      content="Placemein | The Hiring Engine for Tech Placements & Internships"
+      content="Placemein | The Hiring Engine for Tech Placements &amp; Internships"
     />
     <meta
       property="og:description"
       content="End-to-end tech placement and internship programs for students, colleges, and companies across India."
     />
     <meta property="og:url" content="https://www.placemein.com/" />
-    <!-- Update this image path once you have an OG banner -->
     <meta
       property="og:image"
       content="https://www.placemein.com/images/og-placemein.png"
@@ -49,7 +63,7 @@
     <meta name="twitter:site" content="@placemein" />
     <meta
       name="twitter:title"
-      content="Placemein | The Hiring Engine for Tech Placements & Internships"
+      content="Placemein | The Hiring Engine for Tech Placements &amp; Internships"
     />
     <meta
       name="twitter:description"
@@ -81,13 +95,13 @@
             },
             colors: {
               primary: {
-                DEFAULT: "#4B0082", // Placemein Deep Purple
-                dark: "#2E0052", // Darker shade
-                light: "#F3E8FF", // Light Lavender
+                DEFAULT: "#4B0082",
+                dark: "#2E0052",
+                light: "#F3E8FF",
               },
               accent: {
-                DEFAULT: "#6A0DAD", // Bright Purple
-                light: "#E9D5FF", // Lighter accent
+                DEFAULT: "#6A0DAD",
+                light: "#E9D5FF",
               },
             },
             transitionTimingFunction: {
@@ -97,11 +111,9 @@
             animation: {
               "fade-in": "fadeIn 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards",
               "slide-up": "slideUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards",
-              "slide-in-right":
-                "slideInRight 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+              "slide-in-right": "slideInRight 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards",
               float: "float 6s ease-in-out infinite",
-              "pulse-slow":
-                "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
             },
             keyframes: {
               fadeIn: {
@@ -169,12 +181,8 @@
         animation: shimmer 1.5s infinite linear;
       }
       @keyframes shimmer {
-        0% {
-          background-position: -200% 0;
-        }
-        100% {
-          background-position: 200% 0;
-        }
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
       }
     </style>
 
