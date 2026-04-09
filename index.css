@@ -3,9 +3,6 @@ html {
   overscroll-behavior-y: none;
 }
 body {
-  background-color: #FDFBF7;
-  color: #2D2D2D;
-  font-family: 'Cormorant Garamond', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   touch-action: pan-x pan-y;
@@ -28,4 +25,35 @@ body {
 }
 .glow-heart {
   animation: soft-glow 3s infinite ease-in-out;
+}
+
+@keyframes spin-y {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+.animate-spin-y {
+  animation: spin-y 4s linear infinite;
+}
+.pause-animation {
+  animation-play-state: paused;
+}
+
+@keyframes pulse-purple {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(123, 47, 190, 0.4); }
+  50% { box-shadow: 0 0 20px 10px rgba(123, 47, 190, 0.2); }
+}
+.animate-pulse-purple {
+  animation: pulse-purple 2s infinite ease-in-out;
+}
+
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+.animate-vibrate {
+  animation: vibrate 0.3s linear infinite;
 }

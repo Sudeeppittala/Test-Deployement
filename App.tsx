@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -20,6 +20,7 @@ import AdminPage from './pages/AdminPage';
 const AppContent: React.FC = () => {
   const contactRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleScrollToContact = () => {
     // If we are on home page, scroll. If not, navigate home then scroll.
@@ -41,36 +42,34 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 selection:bg-primary/10">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 selection:bg-primary/10">
       <ScrollToTop />
-      <Header
-        onGetInTouchClick={handleScrollToContact}
+      <Header 
+        onGetInTouchClick={handleScrollToContact} 
       />
-      <Routes>
-        <Route path="/" element={<Home contactRef={contactRef} />} />
-        <Route path="/students" element={<StudentsPage />} />
-        <Route path="/colleges" element={<CollegesPage />} />
-        <Route path="/companies" element={<HiringPage />} />
-        <Route path="/partners" element={<PartnersPage />} />
-        <Route path="/careers" element={<CareersPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+      
+      <main>
+        <Routes>
+          <Route path="/" element={<Home onContactClick={handleScrollToContact} contactRef={contactRef} />} />
+          <Route path="/students" element={<StudentsPage />} />
+          <Route path="/colleges" element={<CollegesPage />} />
+          <Route path="/hiring" element={<HiringPage />} />
+          <Route path="/partners" element={<PartnersPage />} />
+          
+          {/* Legal & Company Pages */}
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/compliance" element={<CompliancePage />} />
+          <Route path="/philosophy" element={<PhilosophyPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/admin" element={<AdminPage />} />
 
-        {/* Legal & Company Pages */}
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/compliance" element={<CompliancePage />} />
-        <Route path="/philosophy" element={<PhilosophyPage />} />
-
-        {/* Legacy redirects - clean up old URLs for SEO */}
-        <Route path="/lander" element={<Navigate to="/" replace />} />
-
-        {/* Catch all redirect to home */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-      <Footer
-        onNavigate={handleFooterNavigate}
-        onGetInTouchClick={handleScrollToContact}
-      />
+          {/* Catch all redirect to home */}
+          <Route path="*" element={<Home onContactClick={handleScrollToContact} contactRef={contactRef} />} />
+        </Routes>
+      </main>
+      
+      <Footer onNavigate={handleFooterNavigate} />
     </div>
   );
 };

@@ -5,9 +5,9 @@ export const PERSONA_PAGES: Record<string, PersonaContent> = {
   students: {
     id: 'students',
     hero: {
-      headline: "Launch your tech career. Fast.",
-      subheadline: "Get access to 25+ interview opportunities in 90 days. We bridge the gap between your degree and your first day at work.",
-      cta: "Apply for 90-day sprint"
+      headline: "Opportunity Guarantee Program",
+      subheadline: "Built for eligible learners who want structured placement support, interview readiness, and guided access to real opportunities.",
+      cta: "Apply for Opportunity Guarantee"
     },
     whoThisIsFor: [
       "Final-year students looking for a head-start.",
@@ -16,10 +16,10 @@ export const PERSONA_PAGES: Record<string, PersonaContent> = {
       "Professionals with 0–3 years of experience seeking a pivot."
     ],
     howWeHelp: [
-      "Interview-Ready Profile: We build your portfolio, not just a resume.",
-      "The 90-Day Sprint: Intensive, role-specific technical and soft-skill prep.",
-      "Direct Access: Skip the 'Apply' button; get invited to exclusive drives.",
-      "Mock Rounds: Real-world interview simulations with industry experts."
+      "Readiness Assessment: We identify your gaps and build a plan.",
+      "Resume Improvement: We build your portfolio, not just a resume.",
+      "Mock Interviews & Prep: Real-world interview simulations and employer-facing preparation.",
+      "Opportunity Access: Guided next steps and structured placement journey."
     ],
     connectivity: {
       title: "The Connectivity Advantage",
@@ -30,18 +30,18 @@ export const PERSONA_PAGES: Record<string, PersonaContent> = {
       ]
     },
     howItWorks: [
-      { num: "01", title: "Join Sprint", desc: "Apply and undergo a 360-degree skill audit." },
-      { num: "02", title: "Get Trained & Profiled", desc: "Refine your technical stack and communication through curated drills." },
-      { num: "03", title: "Attend Curated Interviews", desc: "Attend back-to-back drives with our 500+ corporate partners." }
+      { num: "01", title: "Join Program", desc: "Apply and undergo a 360-degree readiness assessment." },
+      { num: "02", title: "Get Prepared", desc: "Refine your technical stack and communication through curated support." },
+      { num: "03", title: "Access Opportunities", desc: "Attend guided drives with our corporate partners." }
     ],
     proof: [
-      "25+ interview opportunities in 90 days",
+      "Structured opportunity access",
       "Average salary hike of 45% for early-pros",
       "500,000+ verified job seekers in network",
       "Dedicated career coach for every candidate"
     ],
     faq: [
-      { question: "Is there a fee?", answer: "We have a transparent program fee for the 90-day sprint which includes all training and interview access." },
+      { question: "Is there a fee?", answer: "For students, the Opportunity Guarantee Program may have a program fee based on the current model. Please check the latest official pricing." },
       { question: "What roles do you offer?", answer: "Development, Data, Cloud, Security, and high-growth non-tech roles." },
       { question: "Is it remote?", answer: "We support both remote-first and on-site opportunities depending on the corporate partner." },
       { question: "What if I don't get placed?", answer: "We provide continuous support and interview access throughout the cycle until you find the right fit." }
@@ -50,9 +50,9 @@ export const PERSONA_PAGES: Record<string, PersonaContent> = {
   colleges: {
     id: 'colleges',
     hero: {
-      headline: "We run your placements.",
-      subheadline: "The plug-and-play placement cell for modern institutions. Up to 25 interview opportunities per eligible student in 90 days.",
-      cta: "Book a pilot drive"
+      headline: "Opportunity Guarantee Partnership",
+      subheadline: "Placemein helps institutions strengthen placement operations through opportunity access models, student readiness support, managed drives, and structured coordination.",
+      cta: "Book a consultation"
     },
     whoThisIsFor: [
       "Engineering and Degree colleges aiming for 100% placements.",
@@ -79,7 +79,7 @@ export const PERSONA_PAGES: Record<string, PersonaContent> = {
       { num: "03", title: "Run Drives", desc: "We run pooled and exclusive drives, managing the entire schedule." }
     ],
     proof: [
-      "3-month pilot cycles",
+      "Opportunity Guarantee support model",
       "90% reduction in manual placement ops",
       "Automated T&P reporting dashboards",
       "Pan-India corporate network access"
@@ -88,7 +88,7 @@ export const PERSONA_PAGES: Record<string, PersonaContent> = {
       { question: "Do we lose control of our cell?", answer: "No, we act as your operational layer, providing full data transparency while you maintain final authority." },
       { question: "What is the minimum batch size?", answer: "We support both small specialized cohorts and large university-wide batches." },
       { question: "How do you handle reporting?", answer: "You get a dedicated dashboard with real-time offer tracking and student progress analytics." },
-      { question: "Is there a setup cost?", answer: "We offer a 3-month pilot to prove value with zero upfront commitment." }
+      { question: "Is there a setup cost?", answer: "We offer custom models to prove value with zero upfront commitment." }
     ]
   },
   hiring: {
