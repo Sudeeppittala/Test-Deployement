@@ -42,7 +42,7 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 selection:bg-primary/10">
+    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100 selection:bg-primary/10">
       <ScrollToTop />
       <Header 
         onGetInTouchClick={handleScrollToContact} 
