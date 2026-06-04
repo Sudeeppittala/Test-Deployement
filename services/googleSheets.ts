@@ -1,8 +1,8 @@
 import { CONFIG } from '../config';
-import { Job, Application } from '../types';
+import { Job, Application, LeadFormData } from '../types';
 
 const CACHE_KEY = 'placemein_jobs_cache';
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+const CACHE_DURATION = 0; // Disabled cache so jobs update instantly
 
 interface JobsCache {
   timestamp: number;
@@ -27,16 +27,17 @@ export async function fetchOpenJobs(): Promise<Job[]> {
     if (!data.jobs) return [];
 
     const jobs = data.jobs.map((job: any) => ({
-      jobId: job.job_id,
-      jobTitle: job.job_title,
-      jobType: job.job_type as 'Internship' | 'Full-time',
-      location: job.location,
-      department: job.department,
-      stipend: job.stipend,
-      duration: job.duration,
-      description: job.description,
-      requirements: job.requirements,
-      deadline: job.application_deadline
+      jobId: job.job_id || job['Job ID'] || job['jobId'] || '',
+      jobTitle: job.job_title || job['Job Title'] || job['jobTitle'] || '',
+      jobType: (job.job_type || job['Job Type'] || job['jobType'] || 'Internship') as 'Internship' | 'Full-time',
+      location: job.location || job['Location'] || '',
+      department: job.department || job['Department'] || '',
+      stipend: job.stipend || job['Stipend'] || '',
+      duration: job.duration || job['Duration'] || '',
+      description: job.description || job['Description'] || '',
+      requirements: job.requirements || job['Requirements'] || '',
+      deadline: job.application_deadline || job['Application Deadline'] || job['deadline'] || '',
+      status: job.status || job['Status'] || job['Job Status'] || job['job_status'] || ''
     }));
 
     // Update cache
@@ -121,5 +122,22 @@ export async function fetchApplications(): Promise<Application[]> {
   } catch (error) {
     console.error('Error fetching applications:', error);
     return [];
+  }
+}
+
+export async function submitLead(data: LeadFormData): Promise<{ success: boolean; leadId?: string }> {
+  try {
+    const response = await fetch(CONFIG.APPLY_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8', // Apps Script CORS compatibility
+      },
+      body: JSON.stringify({ ...data, type: 'lead' }),
+    });
+    const result = await response.json();
+    return result;
+  } catch (err) {
+    console.error('Lead submission error:', err);
+    return { success: false };
   }
 }

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -16,11 +16,11 @@ import CompliancePage from './pages/CompliancePage';
 import PhilosophyPage from './pages/PhilosophyPage';
 import CareersPage from './pages/CareersPage';
 import AdminPage from './pages/AdminPage';
+import EventPage from './pages/EventPage';
 
 const AppContent: React.FC = () => {
   const contactRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleScrollToContact = () => {
     // If we are on home page, scroll. If not, navigate home then scroll.
@@ -63,6 +63,8 @@ const AppContent: React.FC = () => {
           <Route path="/philosophy" element={<PhilosophyPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/roundtable" element={<EventPage />} />
+          <Route path="/hr-roundtable" element={<EventPage />} />
 
           {/* Catch all redirect to home */}
           <Route path="*" element={<Home onContactClick={handleScrollToContact} contactRef={contactRef} />} />
