@@ -35,11 +35,20 @@ jobs:
 
       - name: Copy index.html to all SPA routes (for GitHub Pages SEO)
         run: |
-          mkdir -p dist/students dist/colleges dist/companies dist/careers
+          mkdir -p dist/students dist/colleges dist/hiring dist/partners dist/careers dist/privacy dist/terms dist/compliance dist/philosophy dist/admin dist/roundtable dist/hr-roundtable
           cp dist/index.html dist/students/index.html
           cp dist/index.html dist/colleges/index.html
-          cp dist/index.html dist/companies/index.html
+          cp dist/index.html dist/hiring/index.html
+          cp dist/index.html dist/partners/index.html
           cp dist/index.html dist/careers/index.html
+          cp dist/index.html dist/privacy/index.html
+          cp dist/index.html dist/terms/index.html
+          cp dist/index.html dist/compliance/index.html
+          cp dist/index.html dist/philosophy/index.html
+          cp dist/index.html dist/admin/index.html
+          cp dist/index.html dist/roundtable/index.html
+          cp dist/index.html dist/hr-roundtable/index.html
+          cp dist/index.html dist/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
