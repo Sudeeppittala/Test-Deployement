@@ -1,68 +1,87 @@
-/*
- * GOOGLE SHEET SETUP — ROUNDTABLE PANELISTS & ATTENDEES
- * -------------------------------------------------------
- * 1. Open Google Sheets and create a new sheet.
- * 2. Create two tabs named exactly: "Panelists" and "Attendees"
- * 3. Add column headers exactly as defined below.
- * 4. File → Share → Publish to web
- *    → Select "Panelists" tab → Format: CSV → Publish → Copy URL
- *    → Repeat for "Attendees" tab → Copy URL
- * 5. Add both URLs to your .env file:
- *    VITE_PANELISTS_SHEET_URL=<URL here>
- *    VITE_ATTENDEES_SHEET_URL=<URL here>
- * 6. Restart dev server. Live sheet data will now render.
- * 7. To update a panelist: edit the row → changes appear in ~1–2 minutes.
- * 8. To hide someone without deleting: set visible to FALSE.
- * 9. To add someone new: add a new row → card appears automatically.
- */
-
 import { useState, useEffect } from 'react';
 
 export interface Panelist {
   id: string;
   name: string;
-  designation: string;
-  company: string;
-  role: string;
-  bio: string;
-  profile_pic_url: string;
-  linkedin_url: string;
-  visible: string;
+  title: string;
+  linkedinUrl: string;
+  imageUrl: string;
+  tag: string;
+  coreDomain: string;
 }
 
-const PLACEHOLDER_PANELISTS: Panelist[] = [
+const PRODUCTION_PANELISTS: Panelist[] = [
   {
-    id: "1",
-    name: "Dr. Mantela Gaud Ramchandar",
-    designation: "CHRO & Board Advisor",
-    company: "Placemein Advisory Council",
-    role: "PANEL HOST",
-    bio: "Over 25 years of strategic HR leadership, scaling high-performing global teams and advising corporate boards on workforce transformation.",
-    profile_pic_url: "",
-    linkedin_url: "",
-    visible: "TRUE"
+    id: "host-1",
+    name: "Pittala Sai Sudeep",
+    title: "Chief Operations Officer (COO), Placemein HR Solutions",
+    linkedinUrl: "https://in.linkedin.com/in/saisudeeppittala",
+    imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1783003641/Sudeep_udmpsr.jpg",
+    tag: "Roundtable Moderator & Event Ideator",
+    coreDomain: "Event Moderator (Hiring, skills, and human potential in an AI-first world)"
   },
   {
-    id: "2",
-    name: "Panelist Name Here",
-    designation: "Chief People Officer",
-    company: "Company Name",
-    role: "PANELIST",
-    bio: "Short credential bio will appear here once the panelist is confirmed and added to the Google Sheet.",
-    profile_pic_url: "",
-    linkedin_url: "",
-    visible: "TRUE"
+    id: "panelist-1",
+    name: "Venkat Ramana Kuruhuri",
+    title: "Industry-Academia Expert & Corporate HR Leader",
+    linkedinUrl: "https://www.linkedin.com/in/venkatramanakuruhuri/",
+    imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1782998384/Venkata_Ramana_Kuruhuri_2_cfrlnk.jpg",
+    tag: "Talent Pipelines",
+    coreDomain: "Talent Pipelines & Academic Mentorship"
   },
   {
-    id: "3",
-    name: "Panelist Name Here",
-    designation: "VP of Talent Acquisition",
-    company: "Company Name",
-    role: "PANELIST",
-    bio: "Short credential bio will appear here once the panelist is confirmed and added to the Google Sheet.",
-    profile_pic_url: "",
-    linkedin_url: "",
-    visible: "TRUE"
+    id: "panelist-2",
+    name: "Dr. Maddela Goud Ramchander (Dr. MGR)",
+    title: "Academic Leader & Strategic HR Thought Leader",
+    linkedinUrl: "https://www.linkedin.com/in/rcmaddela/",
+    imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1782998384/Dr.MGR_dsw6tm.jpg",
+    tag: "AI & Skills Education",
+    coreDomain: "Future of Skills & Applied AI Education"
+  },
+  {
+    id: "panelist-3",
+    name: "Radha Gayathri M",
+    title: "Senior HR Executive & Talent Acquisition Leader",
+    linkedinUrl: "https://www.linkedin.com/in/radha-gayathri-m/",
+    imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1782998383/Radha_k6upbf.jpg",
+    tag: "Workforce Scaling",
+    coreDomain: "Corporate Talent Strategy & Workforce Scaling"
+  },
+  {
+    id: "panelist-4",
+    name: "Sreedhar Ellentala",
+    title: "Global Head of IT & Human Resources",
+    linkedinUrl: "https://www.linkedin.com/in/sreedhar-ellentala-7b04681b2/",
+    imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1782998384/Sreedhar_nmru5v.jpg",
+    tag: "HR Technology",
+    coreDomain: "Technology-HR Infrastructure Overhaul"
+  },
+  {
+    id: "panelist-5",
+    name: "Dr. Mruthyanjaya Rao Mangipudi",
+    title: "Head of Corporate HR, Renowned Academic & Author",
+    linkedinUrl: "https://www.linkedin.com/in/mruthyanjayarao/",
+    imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1782998384/Mruthyajaya_cdsxkl.jpg",
+    tag: "Human Potential",
+    coreDomain: "Human Potential & Organizational Dynamics"
+  },
+  {
+    id: "panelist-6",
+    name: "Vedavathy G",
+    title: "HR Leader & Talent Management Strategist",
+    linkedinUrl: "https://www.linkedin.com/in/vedavathy-g-90443a28/",
+    imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1782998384/Vedavathy_uwmgsa.jpg",
+    tag: "Capability Frameworks",
+    coreDomain: "Capability Frameworks & Mindset Transitions"
+  },
+  {
+    id: "panelist-7",
+    name: "Sarvani Vutukuri, SHRM-SCP",
+    title: "Senior Certified HR Professional & Strategic TA Partner",
+    linkedinUrl: "https://www.linkedin.com/in/sarvani-vutukuri-shrm-scp/",
+    imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1782998383/Sarvani_apof2q.jpg",
+    tag: "AI Recruiting & SHRM",
+    coreDomain: "Zero-Latency Recruiting & AI Governance in Hiring"
   }
 ];
 
@@ -115,7 +134,7 @@ function parseCSV(csvText: string): any[] {
 }
 
 export function usePanelistData() {
-  const [panelists, setPanelists] = useState<Panelist[]>(PLACEHOLDER_PANELISTS);
+  const [panelists, setPanelists] = useState<Panelist[]>(PRODUCTION_PANELISTS);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>(null);
 
@@ -124,8 +143,7 @@ export function usePanelistData() {
       const sheetUrl = (import.meta as any).env.VITE_PANELISTS_SHEET_URL;
       
       if (!sheetUrl) {
-        // Silently use placeholders if env variable is not set
-        setPanelists(PLACEHOLDER_PANELISTS.filter(p => p.visible === "TRUE"));
+        setPanelists(PRODUCTION_PANELISTS);
         setLoading(false);
         return;
       }
@@ -138,26 +156,25 @@ export function usePanelistData() {
         const text = await response.text();
         const parsed = parseCSV(text);
 
-        // Normalize visible field and filter
+        // Normalize sheet headers dynamically supporting both old and new layouts
         const visibleList = parsed
           .map((item: any) => ({
             id: String(item.id || ''),
             name: String(item.name || ''),
-            designation: String(item.designation || ''),
-            company: String(item.company || ''),
-            role: String(item.role || 'PANELIST'),
-            bio: String(item.bio || ''),
-            profile_pic_url: String(item.profile_pic_url || ''),
-            linkedin_url: String(item.linkedin_url || ''),
-            visible: String(item.visible || 'FALSE').toUpperCase()
+            title: String(item.title || item.designation || ''),
+            linkedinUrl: String(item.linkedinurl || item.linkedin_url || ''),
+            imageUrl: String(item.imageurl || item.profile_pic_url || ''),
+            tag: String(item.tag || item.role || 'PANELIST'),
+            coreDomain: String(item.coredomain || item.bio || ''),
+            visible: String(item.visible || 'TRUE').toUpperCase()
           }))
           .filter((item: any) => item.visible === "TRUE");
 
-        setPanelists(visibleList);
+        setPanelists(visibleList.length > 0 ? visibleList : PRODUCTION_PANELISTS);
       } catch (err) {
-        console.error("Failed to load panelists from sheet, falling back to placeholders:", err);
+        console.error("Failed to load panelists from sheet, falling back to static production list:", err);
         setError(err);
-        setPanelists(PLACEHOLDER_PANELISTS.filter(p => p.visible === "TRUE"));
+        setPanelists(PRODUCTION_PANELISTS);
       } finally {
         setLoading(false);
       }

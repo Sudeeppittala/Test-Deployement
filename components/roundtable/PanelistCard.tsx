@@ -17,7 +17,7 @@ export const PanelistCard: React.FC<PanelistCardProps> = ({ panelist }) => {
   const [imgError, setImgError] = useState(false);
 
   const initials = getInitials(panelist.name);
-  const showFallback = imgError || !panelist.profile_pic_url;
+  const showFallback = imgError || !panelist.imageUrl;
 
   return (
     <div className="group h-full flex flex-col bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-purple-500/30 transition-all duration-300">
@@ -33,42 +33,39 @@ export const PanelistCard: React.FC<PanelistCardProps> = ({ panelist }) => {
           </div>
         ) : (
           <img 
-            src={panelist.profile_pic_url} 
+            src={panelist.imageUrl} 
             alt={panelist.name}
             onError={() => setImgError(true)}
             className="w-[120px] h-[120px] rounded-full object-cover border-4 border-white dark:border-zinc-800 shadow-md transition-transform duration-500 group-hover:scale-105"
           />
         )}
 
-        {/* Glowing role badge */}
-        <div className="absolute top-4 right-4 bg-[#4B0082] text-white text-[9px] font-bold tracking-widest uppercase px-3 py-1 rounded-full border border-purple-500/20 shadow-sm">
-          {panelist.role || 'PANELIST'}
+        {/* Glowing role/tag badge */}
+        <div className="absolute top-4 right-4 bg-[#4B0082] text-white text-[8px] font-bold tracking-widest uppercase px-3 py-1 rounded-full border border-purple-500/20 shadow-sm max-w-[80%] truncate">
+          {panelist.tag || 'PANELIST'}
         </div>
       </div>
 
       {/* Info details */}
       <div className="p-6 space-y-4 flex-grow flex flex-col justify-between">
         <div className="space-y-1">
-          <h4 className="text-lg font-bold text-black dark:text-white group-hover:text-[#4B0082] dark:group-hover:text-purple-400 transition-colors">
+          <h4 className="text-base font-bold text-black dark:text-white group-hover:text-[#4B0082] dark:group-hover:text-purple-400 transition-colors">
             {panelist.name}
           </h4>
           <p className="text-xs font-semibold text-[#4B0082] dark:text-purple-400">
-            {panelist.designation}
-          </p>
-          <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">
-            {panelist.company}
+            {panelist.title}
           </p>
         </div>
 
         <div className="border-t border-gray-100 dark:border-zinc-800/80 pt-3 space-y-3 flex-grow flex flex-col justify-between">
-          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed flex-grow">
-            {panelist.bio}
+          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed flex-grow font-medium">
+            {panelist.coreDomain || 'Focusing on strategic HR, digital transformation, and scalable recruitment pipelines.'}
           </p>
           
-          {panelist.linkedin_url && (
+          {panelist.linkedinUrl && (
             <div className="pt-2 flex justify-start">
               <a 
-                href={panelist.linkedin_url}
+                href={panelist.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#0077B5] dark:hover:text-[#0077B5] transition-colors"
