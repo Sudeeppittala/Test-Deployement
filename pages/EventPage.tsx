@@ -35,20 +35,30 @@ import PanelistSkeleton from '../components/roundtable/PanelistSkeleton';
    Framer Motion Animation Variants
    ══════════════════════════════════════════════════════════════ */
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40 },
   visible: (i: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] },
+    transition: { 
+      type: "spring",
+      bounce: 0.3,
+      duration: 0.8, 
+      delay: i * 0.1 
+    },
   }),
 };
 
 const scaleIn = {
-  hidden: { opacity: 0, scale: 0.95 },
+  hidden: { opacity: 0, scale: 0.9 },
   visible: (i: number = 0) => ({
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] },
+    transition: { 
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8, 
+      delay: i * 0.08 
+    },
   }),
 };
 
@@ -276,7 +286,7 @@ const TeamMemberCard: React.FC<{ member: { name: string; role: string; imageUrl?
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
       variants={scaleIn}
       custom={index}
       className="bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800/80 p-6 rounded-2xl flex flex-col items-center text-center space-y-4 hover:shadow-lg hover:border-purple-500/25 transition-all duration-300"
@@ -468,7 +478,7 @@ const EventPage: React.FC = () => {
             <motion.div 
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
               variants={scaleIn}
               custom={1}
               onMouseEnter={() => setHoveredMetric(1)}
@@ -519,7 +529,7 @@ const EventPage: React.FC = () => {
             <motion.div 
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
               variants={scaleIn}
               custom={2}
               onMouseEnter={() => setHoveredMetric(2)}
@@ -558,7 +568,7 @@ const EventPage: React.FC = () => {
             <motion.div 
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
               variants={scaleIn}
               custom={3}
               onMouseEnter={() => setHoveredMetric(3)}
@@ -709,7 +719,7 @@ const EventPage: React.FC = () => {
             <motion.div 
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
               variants={scaleIn}
               custom={1}
               className="bg-white dark:bg-zinc-900/50 p-8 rounded-3xl border border-purple-500/10 dark:bg-white/[0.02] flex flex-col justify-between hover:shadow-xl hover:border-purple-500/35 transition-all duration-300 relative overflow-hidden group min-h-[280px]"
@@ -733,7 +743,7 @@ const EventPage: React.FC = () => {
             <motion.div 
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
               variants={scaleIn}
               custom={2}
               className="bg-white dark:bg-zinc-900/50 p-8 rounded-3xl border border-purple-500/10 dark:bg-white/[0.02] flex flex-col justify-between hover:shadow-xl hover:border-purple-500/35 transition-all duration-300 relative overflow-hidden group min-h-[280px]"
@@ -757,7 +767,7 @@ const EventPage: React.FC = () => {
             <motion.div 
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
               variants={scaleIn}
               custom={3}
               className="bg-white dark:bg-zinc-900/50 p-8 rounded-3xl border border-purple-500/10 dark:bg-white/[0.02] flex flex-col justify-between hover:shadow-xl hover:border-purple-500/35 transition-all duration-300 relative overflow-hidden group min-h-[280px]"
@@ -806,7 +816,7 @@ const EventPage: React.FC = () => {
                   key={panelist.id}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
                   variants={scaleIn}
                 >
                   <PanelistCard panelist={panelist} />
@@ -918,7 +928,7 @@ const EventPage: React.FC = () => {
                     whileHover={{ scale: 1.08 }}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
                     variants={scaleIn}
                     custom={idx}
                     className="flex flex-col items-center space-y-2.5 cursor-default group"
@@ -982,7 +992,7 @@ const EventPage: React.FC = () => {
                   key={photo.id}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
                   variants={scaleIn}
                   custom={index}
                   className={`group relative rounded-3xl overflow-hidden border border-gray-100 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-md hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 ${bentoClass}`}
