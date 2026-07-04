@@ -115,6 +115,19 @@ const Hero: React.FC<HeroProps> = ({ activeTab, setActiveTab, onGetInTouchClick,
         
         {/* Main Headline area */}
         <div className="mb-20 max-w-4xl relative animate-fade-in">
+          {/* Floating Pill (Option B) */}
+          <div 
+            onClick={() => navigate('/roundtable')}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary dark:text-primary-light text-sm font-semibold mb-6 hover:bg-primary/20 cursor-pointer transition-colors group"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span>Learn about our HR Roundtable Edition 1</span>
+            <span className="ml-1 group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+
           <h1 className="font-sans font-semibold text-5xl md:text-6xl lg:text-7xl text-primary dark:text-primary-light tracking-tight leading-[1.1] mb-6">
             The hiring engine <br/>
             <span className="text-slate-900 dark:text-white">for everyone.</span>

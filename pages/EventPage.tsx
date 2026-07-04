@@ -23,7 +23,8 @@ import {
   ShieldCheck,
   BookOpen,
   BrainCircuit,
-  Rocket
+  Rocket,
+  Linkedin
 } from 'lucide-react';
 import { usePanelistData, Panelist } from '../hooks/usePanelistData';
 import { useAttendeeData, Attendee } from '../hooks/useAttendeeData';
@@ -279,7 +280,7 @@ const getTeamInitials = (name: string) => {
   return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
 };
 
-const TeamMemberCard: React.FC<{ member: { name: string; role: string; imageUrl?: string }; index: number }> = ({ member, index }) => {
+const TeamMemberCard: React.FC<{ member: { name: string; role: string; imageUrl?: string; linkedinUrl?: string }; index: number }> = ({ member, index }) => {
   const [imgError, setImgError] = useState(false);
   const showFallback = imgError || !member.imageUrl;
   return (
@@ -289,8 +290,19 @@ const TeamMemberCard: React.FC<{ member: { name: string; role: string; imageUrl?
       viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
       variants={scaleIn}
       custom={index}
-      className="bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800/80 p-6 rounded-2xl flex flex-col items-center text-center space-y-4 hover:shadow-lg hover:border-purple-500/25 transition-all duration-300"
+      className="bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800/80 p-6 rounded-2xl flex flex-col items-center text-center space-y-4 hover:shadow-lg hover:border-purple-500/25 transition-all duration-300 relative group"
     >
+      {member.linkedinUrl && (
+        <a 
+          href={member.linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute top-4 right-4 text-gray-400 hover:text-[#0077b5] transition-colors"
+          aria-label={`${member.name}'s LinkedIn`}
+        >
+          <Linkedin size={18} />
+        </a>
+      )}
       <div className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center shadow-md select-none relative bg-purple-950/10">
         {showFallback ? (
           <div className="w-full h-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white font-black text-lg">
@@ -852,23 +864,27 @@ const EventPage: React.FC = () => {
               {[
                 { 
                   name: "Chetti Rakesh", 
-                  role: "Founder of Placemein, Chairman of the Company", 
-                  imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1783005329/Rakesh_x8rl7b.jpg" 
+                  role: "Founder and Chairman, Placemein", 
+                  imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1783005329/Rakesh_x8rl7b.jpg",
+                  linkedinUrl: "https://www.linkedin.com/in/rakeshchetti/"
                 },
                 { 
                   name: "Kathija Shaik", 
                   role: "Co-Founder and Managing Director", 
-                  imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1783005329/Katija_atgim0.jpg" 
+                  imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1783005329/Katija_atgim0.jpg",
+                  linkedinUrl: "https://www.linkedin.com/in/kathija-shaik-2111a6235/"
                 },
                 { 
                   name: "Y Thejo Samuel Paul", 
                   role: "Co-Founder and CEO", 
-                  imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1783005329/SAM_tmagru.jpg" 
+                  imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1783005329/SAM_tmagru.jpg",
+                  linkedinUrl: "https://www.linkedin.com/in/y-thejo-samuel-paul-54a548225/"
                 },
                 { 
                   name: "Pittala Sai Sudeep", 
                   role: "Co-Founder and COO", 
-                  imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1783005662/Sudeep_apcfsy.jpg" 
+                  imageUrl: "https://res.cloudinary.com/dp9jnvstr/image/upload/v1783005662/Sudeep_apcfsy.jpg",
+                  linkedinUrl: "https://www.linkedin.com/in/saisudeeppittala/"
                 }
               ].map((member, idx) => (
                 <TeamMemberCard key={idx} member={member} index={idx} />
