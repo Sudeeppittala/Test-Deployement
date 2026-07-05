@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -17,10 +17,14 @@ import PhilosophyPage from './pages/PhilosophyPage';
 import CareersPage from './pages/CareersPage';
 import AdminPage from './pages/AdminPage';
 import EventPage from './pages/EventPage';
+import StandardGroupHiringPage from './pages/StandardGroupHiringPage';
 
 const AppContent: React.FC = () => {
   const contactRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isMicrosite = location.pathname.startsWith('/stangroupco') || location.pathname.startsWith('/standard-group');
 
   const handleScrollToContact = () => {
     // If we are on home page, scroll. If not, navigate home then scroll.
@@ -44,9 +48,11 @@ const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100 selection:bg-primary/10">
       <ScrollToTop />
-      <Header 
-        onGetInTouchClick={handleScrollToContact} 
-      />
+      {!isMicrosite && (
+        <Header 
+          onGetInTouchClick={handleScrollToContact} 
+        />
+      )}
       
       <main>
         <Routes>
@@ -55,6 +61,10 @@ const AppContent: React.FC = () => {
           <Route path="/colleges" element={<CollegesPage />} />
           <Route path="/hiring" element={<HiringPage />} />
           <Route path="/partners" element={<PartnersPage />} />
+          
+          {/* Dedicated hiring microsite for Standard Group of Companies */}
+          <Route path="/stangroupco" element={<StandardGroupHiringPage />} />
+          <Route path="/standard-group" element={<StandardGroupHiringPage />} />
           
           {/* Legal & Company Pages */}
           <Route path="/privacy" element={<PrivacyPage />} />
@@ -71,7 +81,7 @@ const AppContent: React.FC = () => {
         </Routes>
       </main>
       
-      <Footer onNavigate={handleFooterNavigate} />
+      {!isMicrosite && <Footer onNavigate={handleFooterNavigate} />}
     </div>
   );
 };
