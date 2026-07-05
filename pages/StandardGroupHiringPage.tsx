@@ -164,8 +164,7 @@ const INTEGRATION_CONFIG = {
   googleSheetUrl: "https://docs.google.com/spreadsheets/d/1Po911i8GBvIeJzjzZ2I5vo5wUtAYP1o9swbY4FSz_XQ/edit?usp=sharing",
   appsScriptProjectName: "Standard Group of Companies Hiring - Applications",
   appsScriptWebAppUrl: "https://script.google.com/macros/s/AKfycbwyfAXb-1ACMuyKHbtx21aCiWAxV7A2G_JewwS-nXOWyRLoY0j1YFjQimAnAFjSmSLZ/exec",
-  supportEmail: "support@placemein.com",
-  supportContact: "+91 80088 12345",
+  supportEmail: "info@placemein.com",
   deadline: "July 25, 2026"
 };
 
@@ -650,19 +649,6 @@ const StandardGroupHiringPage: React.FC = () => {
                 <div>
                   <span className="block text-[10px] text-slate-400 font-bold uppercase">Email Coordinator</span>
                   <span className="text-xs font-bold text-white">{INTEGRATION_CONFIG.supportEmail}</span>
-                </div>
-              </a>
-
-              <a 
-                href={`https://wa.me/${INTEGRATION_CONFIG.supportContact.replace(/[+\s]/g, '')}`} 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 bg-slate-900 rounded-xl hover:bg-black transition-colors"
-              >
-                <Phone className="text-emerald-500" size={20} />
-                <div>
-                  <span className="block text-[10px] text-slate-400 font-bold uppercase">WhatsApp / Call Hotline</span>
-                  <span className="text-xs font-bold text-white">{INTEGRATION_CONFIG.supportContact}</span>
                 </div>
               </a>
             </div>
