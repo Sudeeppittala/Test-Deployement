@@ -62,8 +62,8 @@ const PrivacyPage: React.FC = () => {
             <p className="text-gray-600 mb-4">For privacy concerns, please reach out to:</p>
             <p className="font-medium text-slate-900">
               Placemein Operations<br/>
-              Placemein.com 5th floor, DLF Cyber City, to, opp. lane<br/>
-              APHB Colony, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032<br/>
+              Hive Space 2.0, Ramalayam Rd, Kondapur<br/>
+              Laxmi Cyber City, Whitefields, HITEC City, Hyderabad, Telangana 500081<br/>
               Email: privacy@placemein.com
             </p>
           </div>

@@ -64,12 +64,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="mt-8">
                <div className="text-[10px] text-gray-600 font-bold uppercase tracking-widest mb-2">Office Headquarters</div>
                <a 
-                 href="https://maps.app.goo.gl/hNT14MfyUd1co1R89" 
+                 href="https://maps.app.goo.gl/EgXPsDSDmx6jpcBV8" 
                  target="_blank" 
                  rel="noopener noreferrer"
                  className="text-sm text-gray-400 font-medium hover:text-white transition-colors block leading-relaxed"
                >
-                 Placemein HR Solutions, 5th floor, Vasista Bhavan, DLF Cyber City opp. lane, APHB Colony, Indira Nagar, Gachibowli, Hyderabad, Telangana 500032.
+                 Placemein HR Solutions, Hive Space 2.0, Ramalayam Rd, Kondapur, Laxmi Cyber City, Whitefields, HITEC City, Hyderabad, Telangana 500081.
                </a>
             </div>
           </div>
