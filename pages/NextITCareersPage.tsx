@@ -161,11 +161,17 @@ const NextITCareersPage: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0} className="text-center max-w-3xl mx-auto">
             
-            {/* Client Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#4B0082]/10 dark:bg-purple-900/40 border border-[#4B0082]/20 dark:border-purple-700/50 mb-6">
-              <Building2 className="w-4 h-4 text-[#4B0082] dark:text-purple-300" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[#4B0082] dark:text-purple-300">
-                NEXT IT SOLUTIONS • TALENT PORTAL
+            {/* Client Co-Branding Badge */}
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white dark:bg-gray-900 border border-purple-200 dark:border-purple-800/60 shadow-md mb-8">
+              <img 
+                src="https://res.cloudinary.com/dp9jnvstr/image/upload/v1784716281/Nextitcareer_logo-New-1a_frb8lw.png" 
+                alt="Next IT Career Logo" 
+                className="h-7 max-w-[150px] object-contain"
+              />
+              <span className="w-px h-5 bg-gray-200 dark:bg-gray-700" />
+              <span className="text-xs font-bold uppercase tracking-wider text-[#4B0082] dark:text-purple-300 flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                Built for Next IT Career Students
               </span>
             </div>
 
@@ -176,7 +182,7 @@ const NextITCareersPage: React.FC = () => {
 
             {/* Subtext */}
             <p className="mt-5 text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-              Welcome to the official recruitment and profile creation portal for <span className="font-semibold text-gray-900 dark:text-white">Next IT Solutions</span>. Complete your application below to get matched with active tech roles and campus drives.
+              Official candidate profile registration and job application portal built for <span className="font-semibold text-[#4B0082] dark:text-purple-300">Next IT Career</span> students. Complete your application below to get matched with active tech roles and hiring drives.
             </p>
 
             {/* Highlights Strip */}
@@ -242,6 +248,25 @@ const NextITCareersPage: React.FC = () => {
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}>
+            {/* Co-Branding Banner Card */}
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-white dark:bg-gray-900 border border-purple-100 dark:border-purple-800/50 shadow-sm">
+              <div className="flex items-center gap-3">
+                <img 
+                  src="https://res.cloudinary.com/dp9jnvstr/image/upload/v1784716281/Nextitcareer_logo-New-1a_frb8lw.png" 
+                  alt="Next IT Career" 
+                  className="h-8 max-w-[160px] object-contain"
+                />
+                <span className="w-px h-6 bg-gray-200 dark:bg-gray-700 hidden sm:block" />
+                <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 hidden sm:block">
+                  Built exclusively for Next IT Career students
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-50 dark:bg-purple-950/60 text-[#4B0082] dark:text-purple-300 text-xs font-bold">
+                <ShieldCheck className="w-4 h-4 text-[#4B0082] dark:text-purple-300" />
+                Verified Student Application
+              </div>
+            </div>
+
             <SharedApplicationForm 
               source="Next IT Solutions"
               sheetName="Next IT Solutions"
