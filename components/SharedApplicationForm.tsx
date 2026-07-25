@@ -132,18 +132,33 @@ const fadeUp: Variants = {
   }),
 };
 
-const PREDEFINED_SKILLS = [
-  'Python', 'Java', 'JavaScript', 'React.js', 'Node.js', 
-  'SQL / Databases', 'C++', 'HTML5 / CSS3', 'Git / GitHub', 
-  'AWS Cloud', 'Data Analysis', 'QA & Testing', 
-  'Excel / Advanced Excel', 'Figma / UI UX', 'Communication'
-];
+const DOMAIN_SKILLS_MAP: Record<string, string[]> = {
+  'Software Engineer / Developer': ['Python', 'Java', 'C++', 'Data Structures', 'Algorithms', 'SQL', 'Git', 'System Design', 'JavaScript'],
+  'Full Stack Developer (React & Node.js)': ['React.js', 'Node.js', 'JavaScript', 'TypeScript', 'Express.js', 'MongoDB', 'SQL', 'Git', 'HTML5 / CSS3'],
+  'Frontend Developer (React.js / Next.js)': ['React.js', 'Next.js', 'JavaScript', 'TypeScript', 'HTML5 / CSS3', 'Tailwind CSS', 'Figma / UI UX', 'Git', 'Redux'],
+  'Backend Developer (Node.js / Python / Java)': ['Node.js', 'Python', 'Java', 'SQL / Databases', 'MongoDB', 'PostgreSQL', 'REST APIs', 'Docker', 'AWS Cloud'],
+  'QA & Test Automation Engineer': ['Selenium', 'Cypress', 'Postman', 'Java', 'Python', 'JIRA', 'Manual Testing', 'API Testing', 'Git'],
+  'Data Analyst / Data Engineer': ['Python', 'SQL / Databases', 'Excel / Advanced Excel', 'Power BI / Tableau', 'Data Engineering', 'ETL', 'AWS Cloud', 'Data Analysis'],
+  'Data Scientist / AI Specialist': ['Python', 'Machine Learning', 'Deep Learning', 'Data Science', 'TensorFlow', 'PyTorch', 'SQL / Databases', 'NLP'],
+  'Cloud & DevOps Specialist': ['AWS Cloud', 'Docker', 'Kubernetes', 'DevOps & CI/CD', 'Linux', 'Terraform', 'Jenkins', 'Bash/Shell'],
+  'Business Development & Client Relations': ['Communication', 'Sales', 'CRM', 'Negotiation', 'Marketing', 'Lead Generation', 'Client Management', 'Presentation'],
+  'Technical Trainee / Graduate Intern': ['Python', 'Java', 'JavaScript', 'C++', 'HTML5 / CSS3', 'SQL / Databases', 'Data Structures', 'Communication'],
+  'default': ['Python', 'Java', 'JavaScript', 'React.js', 'Node.js', 'SQL / Databases', 'C++', 'HTML5 / CSS3', 'Git / GitHub', 'AWS Cloud', 'Data Analysis', 'QA & Testing', 'Excel / Advanced Excel', 'Figma / UI UX', 'Communication']
+};
 
-const PREDEFINED_LEARNING_SKILLS = [
-  'AI & Machine Learning', 'Data Science', 'Docker & Containers', 
-  'Next.js', 'Kubernetes', 'System Design', 'Power BI / Tableau', 
-  'Cybersecurity', 'Cloud Architecture', 'DevOps & CI/CD', 'Tailwind CSS'
-];
+const DOMAIN_LEARNING_SKILLS_MAP: Record<string, string[]> = {
+  'Software Engineer / Developer': ['System Design', 'Cloud Architecture', 'DevOps & CI/CD', 'AI & Machine Learning', 'Microservices', 'GraphQL'],
+  'Full Stack Developer (React & Node.js)': ['Next.js', 'GraphQL', 'Docker & Containers', 'AWS Cloud', 'Microservices', 'Web3 / Blockchain'],
+  'Frontend Developer (React.js / Next.js)': ['Three.js', 'Web Animations', 'GraphQL', 'UX/UI Design', 'Performance Optimization', 'PWA'],
+  'Backend Developer (Node.js / Python / Java)': ['Kubernetes', 'Kafka', 'Redis', 'System Design', 'Cloud Architecture', 'Microservices'],
+  'QA & Test Automation Engineer': ['Performance Testing', 'Security Testing', 'CI/CD Pipelines', 'Appium', 'Playwright'],
+  'Data Analyst / Data Engineer': ['Snowflake', 'BigQuery', 'Apache Spark', 'Kafka', 'Machine Learning', 'Cloud Architecture'],
+  'Data Scientist / AI Specialist': ['Generative AI', 'MLOps', 'Computer Vision', 'Advanced NLP', 'Reinforcement Learning', 'Cloud Architecture'],
+  'Cloud & DevOps Specialist': ['Kubernetes', 'Cloud Architecture', 'DevSecOps', 'Prometheus / Grafana', 'Serverless Computing'],
+  'Business Development & Client Relations': ['Digital Marketing', 'Data Analysis', 'Strategic Planning', 'Product Management'],
+  'Technical Trainee / Graduate Intern': ['AI & Machine Learning', 'Data Science', 'Docker & Containers', 'Next.js', 'Kubernetes', 'System Design', 'Cybersecurity'],
+  'default': ['AI & Machine Learning', 'Data Science', 'Docker & Containers', 'Next.js', 'Kubernetes', 'System Design', 'Power BI / Tableau', 'Cybersecurity', 'Cloud Architecture', 'DevOps & CI/CD', 'Tailwind CSS']
+};
 
 interface SharedApplicationFormProps {
   customRoles?: string[];
@@ -666,23 +681,28 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
                       <span className="text-[10px] text-gray-400 font-medium">Click to select/unselect</span>
                     </div>
                     <div className="flex flex-wrap gap-2 mb-2">
-                      {PREDEFINED_SKILLS.map(skill => {
-                        const active = selectedSkills.includes(skill);
-                        return (
-                          <button
-                            key={skill}
-                            type="button"
-                            onClick={() => toggleSkill(skill)}
-                            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                              active 
-                                ? 'bg-[#4B0082] text-white shadow-[0_4px_12px_rgba(75,0,130,0.3)] scale-[1.02]' 
-                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200/80 dark:border-gray-700/80 shadow-[2px_2px_5px_rgba(0,0,0,0.04),-2px_-2px_5px_rgba(255,255,255,0.9)] hover:border-purple-300'
-                            }`}
-                          >
-                            {active ? '✓ ' : '+ '} {skill}
-                          </button>
-                        );
-                      })}
+                      {(() => {
+                        const availableSkills = DOMAIN_SKILLS_MAP[selectedJobTitle] || DOMAIN_SKILLS_MAP['default'];
+                        const skillsToRender = Array.from(new Set([...availableSkills, ...selectedSkills]));
+                        
+                        return skillsToRender.map(skill => {
+                          const active = selectedSkills.includes(skill);
+                          return (
+                            <button
+                              key={skill}
+                              type="button"
+                              onClick={() => toggleSkill(skill)}
+                              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                                active 
+                                  ? 'bg-[#4B0082] text-white shadow-[0_4px_12px_rgba(75,0,130,0.3)] scale-[1.02]' 
+                                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200/80 dark:border-gray-700/80 shadow-[2px_2px_5px_rgba(0,0,0,0.04),-2px_-2px_5px_rgba(255,255,255,0.9)] hover:border-purple-300'
+                              }`}
+                            >
+                              {active ? '✓ ' : '+ '} {skill}
+                            </button>
+                          );
+                        });
+                      })()}
                     </div>
                     
                     {/* Custom Skill Input */}
@@ -714,23 +734,28 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
                       <span className="text-[10px] text-gray-400 font-medium">Optional target skills</span>
                     </div>
                     <div className="flex flex-wrap gap-2 mb-2">
-                      {PREDEFINED_LEARNING_SKILLS.map(skill => {
-                        const active = learningSkills.includes(skill);
-                        return (
-                          <button
-                            key={skill}
-                            type="button"
-                            onClick={() => toggleLearningSkill(skill)}
-                            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                              active 
-                                ? 'bg-blue-600 text-white shadow-[0_4px_12px_rgba(37,99,235,0.3)] scale-[1.02]' 
-                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200/80 dark:border-gray-700/80 shadow-[2px_2px_5px_rgba(0,0,0,0.04),-2px_-2px_5px_rgba(255,255,255,0.9)] hover:border-blue-300'
-                            }`}
-                          >
-                            {active ? '✓ ' : '+ '} {skill}
-                          </button>
-                        );
-                      })}
+                      {(() => {
+                        const availableLearningSkills = DOMAIN_LEARNING_SKILLS_MAP[selectedJobTitle] || DOMAIN_LEARNING_SKILLS_MAP['default'];
+                        const learningSkillsToRender = Array.from(new Set([...availableLearningSkills, ...learningSkills]));
+                        
+                        return learningSkillsToRender.map(skill => {
+                          const active = learningSkills.includes(skill);
+                          return (
+                            <button
+                              key={skill}
+                              type="button"
+                              onClick={() => toggleLearningSkill(skill)}
+                              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                                active 
+                                  ? 'bg-blue-600 text-white shadow-[0_4px_12px_rgba(37,99,235,0.3)] scale-[1.02]' 
+                                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200/80 dark:border-gray-700/80 shadow-[2px_2px_5px_rgba(0,0,0,0.04),-2px_-2px_5px_rgba(255,255,255,0.9)] hover:border-blue-300'
+                              }`}
+                            >
+                              {active ? '✓ ' : '+ '} {skill}
+                            </button>
+                          );
+                        });
+                      })()}
                     </div>
 
                     {/* Custom Learning Skill Input */}
