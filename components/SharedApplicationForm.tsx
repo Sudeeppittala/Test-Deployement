@@ -136,6 +136,10 @@ interface SharedApplicationFormProps {
   customRoles?: string[];
   defaultRole?: string;
   source: string;
+  sheetName?: string;
+  client?: string;
+  formTitle?: string;
+  formSubtitle?: string;
   successTitle?: string;
   successSubtitle?: string;
   successDetails?: React.ReactNode;
@@ -145,6 +149,10 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
   customRoles,
   defaultRole = '',
   source,
+  sheetName,
+  client,
+  formTitle,
+  formSubtitle,
   successTitle = 'Submission received!',
   successSubtitle = 'We will respond back to you shortly.',
   successDetails
@@ -214,6 +222,8 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
     const leadData: any = {
       type: 'lead',
       source: actualSource,
+      sheetName: sheetName || actualSource,
+      client: client || actualSource,
       preferredRole: formData.get('preferredRole') as string,
       name: formData.get('name') as string,
       email: formData.get('email') as string,
@@ -301,6 +311,19 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
           /* ─── FORM ─── */
           <div className="relative">
             <form ref={formRef} onSubmit={handleLeadSubmit}>
+              {formTitle && (
+                <div className="mb-8 border-b border-gray-100 dark:border-gray-800 pb-6">
+                  <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
+                    {formTitle}
+                  </h3>
+                  {formSubtitle && (
+                    <p className="text-gray-500 dark:text-gray-400 text-sm mt-2 leading-relaxed">
+                      {formSubtitle}
+                    </p>
+                  )}
+                </div>
+              )}
+
               {/* PREFERRED ROLE — Hero Input (Full Width) */}
               <div className="flex gap-4 mb-6">
                 <select

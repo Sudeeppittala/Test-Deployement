@@ -18,6 +18,7 @@ import CareersPage from './pages/CareersPage';
 import AdminPage from './pages/AdminPage';
 import EventPage from './pages/EventPage';
 import StandardGroupHiringPage from './pages/StandardGroupHiringPage';
+import NextITCareersPage from './pages/NextITCareersPage';
 
 const AppContent: React.FC = () => {
   const contactRef = useRef<HTMLElement>(null);
@@ -65,6 +66,12 @@ const AppContent: React.FC = () => {
           {/* Dedicated hiring microsite for Standard Group of Companies */}
           <Route path="/stangroupco" element={<StandardGroupHiringPage />} />
           <Route path="/standard-group" element={<StandardGroupHiringPage />} />
+
+          {/* Dedicated hiring & student data submission portal for Next IT Solutions */}
+          <Route path="/next-it-careers" element={<NextITCareersPage />} />
+          <Route path="/next-it-solutions" element={<NextITCareersPage />} />
+          <Route path="/next-it-hiring" element={<NextITCareersPage />} />
+          <Route path="/next-it" element={<NextITCareersPage />} />
           
           {/* Legal & Company Pages */}
           <Route path="/privacy" element={<PrivacyPage />} />

@@ -32,6 +32,9 @@ export interface Application {
 
 export interface LeadFormData {
   type: 'lead';
+  source?: string;
+  sheetName?: string;
+  client?: string;
   preferredRole: string;
   name: string;
   email: string;
