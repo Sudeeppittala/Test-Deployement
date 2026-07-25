@@ -132,6 +132,19 @@ const fadeUp: Variants = {
   }),
 };
 
+const PREDEFINED_SKILLS = [
+  'Python', 'Java', 'JavaScript', 'React.js', 'Node.js', 
+  'SQL / Databases', 'C++', 'HTML5 / CSS3', 'Git / GitHub', 
+  'AWS Cloud', 'Data Analysis', 'QA & Testing', 
+  'Excel / Advanced Excel', 'Figma / UI UX', 'Communication'
+];
+
+const PREDEFINED_LEARNING_SKILLS = [
+  'AI & Machine Learning', 'Data Science', 'Docker & Containers', 
+  'Next.js', 'Kubernetes', 'System Design', 'Power BI / Tableau', 
+  'Cybersecurity', 'Cloud Architecture', 'DevOps & CI/CD', 'Tailwind CSS'
+];
+
 interface SharedApplicationFormProps {
   customRoles?: string[];
   defaultRole?: string;
@@ -166,6 +179,39 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
   const [gradMode, setGradMode] = useState<'percentage' | 'cgpa'>('percentage');
   const [selectedJobTitle, setSelectedJobTitle] = useState<string>(defaultRole);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  /* ─── Categorized Skills State ─── */
+  const [selectedSkills, setSelectedSkills] = useState<string[]>(['Python', 'JavaScript']);
+  const [customSkill, setCustomSkill] = useState<string>('');
+
+  const [learningSkills, setLearningSkills] = useState<string[]>(['AI & Machine Learning', 'System Design']);
+  const [customLearningSkill, setCustomLearningSkill] = useState<string>('');
+
+  const toggleSkill = (skill: string) => {
+    setSelectedSkills(prev => 
+      prev.includes(skill) ? prev.filter(s => s !== skill) : [...prev, skill]
+    );
+  };
+
+  const addCustomSkill = () => {
+    if (customSkill.trim() && !selectedSkills.includes(customSkill.trim())) {
+      setSelectedSkills(prev => [...prev, customSkill.trim()]);
+      setCustomSkill('');
+    }
+  };
+
+  const toggleLearningSkill = (skill: string) => {
+    setLearningSkills(prev => 
+      prev.includes(skill) ? prev.filter(s => s !== skill) : [...prev, skill]
+    );
+  };
+
+  const addCustomLearningSkill = () => {
+    if (customLearningSkill.trim() && !learningSkills.includes(customLearningSkill.trim())) {
+      setLearningSkills(prev => [...prev, customLearningSkill.trim()]);
+      setCustomLearningSkill('');
+    }
+  };
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -218,6 +264,11 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
     setLeadSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
+    const skillsHaveStr = selectedSkills.join(', ') || (formData.get('studentSkills') as string || '');
+    const skillsLearnStr = learningSkills.join(', ');
+    const combinedSkills = skillsLearnStr 
+      ? `${skillsHaveStr} | Learning: ${skillsLearnStr}`
+      : skillsHaveStr;
 
     const leadData: any = {
       type: 'lead',
@@ -241,7 +292,8 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
       tenthStandard: formData.get('tenthStandard') as string,
       twelfthPassoutYear: formData.get('twelfthPassoutYear') as string,
       twelfthStandard: formData.get('twelfthStandard') as string,
-      studentSkills: formData.get('studentSkills') as string,
+      studentSkills: combinedSkills,
+      skillsLearning: skillsLearnStr,
       ArrearsCount: formData.get('ArrearsCount') as string,
       location: formData.get('location') as string,
       linkedinUrl: formData.get('linkedinUrl') as string,
@@ -276,7 +328,7 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
   const selectedJob = jobs.find(j => j.jobTitle === selectedJobTitle);
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-xl overflow-hidden text-left">
+    <div className="bg-[#F8FAFC] dark:bg-gray-900 rounded-3xl border border-white/80 dark:border-gray-800 shadow-[16px_16px_36px_rgba(0,0,0,0.06),-16px_-16px_36px_rgba(255,255,255,0.9)] dark:shadow-[16px_16px_36px_rgba(0,0,0,0.5)] overflow-hidden text-left">
       <div className="p-8 md:p-12">
         {leadStatus === 'success' ? (
           /* ─── SUCCESS STATE ─── */
@@ -602,19 +654,111 @@ const SharedApplicationForm: React.FC<SharedApplicationFormProps> = ({
                   defaultValue="0"
                   className="col-span-6 md:col-span-2"
                 />
-                <div className="col-span-6 md:col-span-4">
-                  <label htmlFor="studentSkills" className="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1.5">
-                    Skills
-                  </label>
+                {/* SKILLS CATEGORIES — NEUMORPHIC SELECTION */}
+                <div className="col-span-6 md:col-span-4 space-y-4 bg-slate-50/80 dark:bg-gray-800/50 p-5 rounded-2xl border border-gray-200/70 dark:border-gray-700/60 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.03)]">
+                  
+                  {/* Category 1: Skills You Currently Have */}
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <label className="block text-[11px] font-extrabold text-[#4B0082] dark:text-purple-300 uppercase tracking-wider">
+                        Skills You Currently Have <span className="text-red-400">*</span>
+                      </label>
+                      <span className="text-[10px] text-gray-400 font-medium">Click to select/unselect</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {PREDEFINED_SKILLS.map(skill => {
+                        const active = selectedSkills.includes(skill);
+                        return (
+                          <button
+                            key={skill}
+                            type="button"
+                            onClick={() => toggleSkill(skill)}
+                            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                              active 
+                                ? 'bg-[#4B0082] text-white shadow-[0_4px_12px_rgba(75,0,130,0.3)] scale-[1.02]' 
+                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200/80 dark:border-gray-700/80 shadow-[2px_2px_5px_rgba(0,0,0,0.04),-2px_-2px_5px_rgba(255,255,255,0.9)] hover:border-purple-300'
+                            }`}
+                          >
+                            {active ? '✓ ' : '+ '} {skill}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    
+                    {/* Custom Skill Input */}
+                    <div className="flex gap-2 mt-2">
+                      <input
+                        type="text"
+                        placeholder="Add another skill you have..."
+                        value={customSkill}
+                        onChange={(e) => setCustomSkill(e.target.value)}
+                        onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addCustomSkill(); } }}
+                        className="flex-1 bg-white dark:bg-gray-800 border border-gray-200/80 dark:border-gray-700/80 rounded-xl px-3 py-2 text-xs text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4B0082]/30 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.05)]"
+                      />
+                      <button
+                        type="button"
+                        onClick={addCustomSkill}
+                        className="px-4 py-2 bg-[#4B0082]/10 dark:bg-purple-900/30 text-[#4B0082] dark:text-purple-300 text-xs font-bold rounded-xl hover:bg-[#4B0082]/20 transition-all shadow-[2px_2px_5px_rgba(0,0,0,0.05)]"
+                      >
+                        + Add
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Category 2: Skills Currently Learning / Want to Learn */}
+                  <div className="pt-3 border-t border-gray-200/60 dark:border-gray-700/60">
+                    <div className="flex items-center justify-between mb-2">
+                      <label className="block text-[11px] font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                        Skills Currently Learning / Want to Learn
+                      </label>
+                      <span className="text-[10px] text-gray-400 font-medium">Optional target skills</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {PREDEFINED_LEARNING_SKILLS.map(skill => {
+                        const active = learningSkills.includes(skill);
+                        return (
+                          <button
+                            key={skill}
+                            type="button"
+                            onClick={() => toggleLearningSkill(skill)}
+                            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                              active 
+                                ? 'bg-blue-600 text-white shadow-[0_4px_12px_rgba(37,99,235,0.3)] scale-[1.02]' 
+                                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200/80 dark:border-gray-700/80 shadow-[2px_2px_5px_rgba(0,0,0,0.04),-2px_-2px_5px_rgba(255,255,255,0.9)] hover:border-blue-300'
+                            }`}
+                          >
+                            {active ? '✓ ' : '+ '} {skill}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Custom Learning Skill Input */}
+                    <div className="flex gap-2 mt-2">
+                      <input
+                        type="text"
+                        placeholder="Add target skill you are learning..."
+                        value={customLearningSkill}
+                        onChange={(e) => setCustomLearningSkill(e.target.value)}
+                        onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addCustomLearningSkill(); } }}
+                        className="flex-1 bg-white dark:bg-gray-800 border border-gray-200/80 dark:border-gray-700/80 rounded-xl px-3 py-2 text-xs text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/30 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.05)]"
+                      />
+                      <button
+                        type="button"
+                        onClick={addCustomLearningSkill}
+                        className="px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-xs font-bold rounded-xl hover:bg-blue-100 transition-all shadow-[2px_2px_5px_rgba(0,0,0,0.05)]"
+                      >
+                        + Add
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Hidden Input for standard form submission */}
                   <input
-                    id="studentSkills"
+                    type="hidden"
                     name="studentSkills"
-                    type="text"
-                    required
-                    placeholder="e.g. Python, HTML, CSS, Excel, Communication"
-                    className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4B0082]/30 focus:border-[#4B0082] transition-all duration-150 w-full"
+                    value={selectedSkills.join(', ')}
                   />
-                  <p className="text-[10px] text-gray-400 mt-1">Separate with commas</p>
                 </div>
 
                 {/* ROW 9: LinkedIn + Resume Link */}

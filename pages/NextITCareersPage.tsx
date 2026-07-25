@@ -111,6 +111,7 @@ const NEXT_IT_ROLES = [
   'Backend Developer (Node.js / Python / Java)',
   'QA & Test Automation Engineer',
   'Data Analyst / Data Engineer',
+  'Data Scientist / AI Specialist',
   'Cloud & DevOps Specialist',
   'Business Development & Client Relations',
   'Technical Trainee / Graduate Intern'
@@ -119,19 +120,19 @@ const NEXT_IT_ROLES = [
 const FAQS = [
   {
     question: "Who can fill out this Student Data Submission & Profile Creation Form?",
-    answer: "Students, recent graduates, and job seekers interested in career opportunities, placement drives, and internships at Next IT Solutions can complete this form."
+    answer: "Students, recent graduates, and job seekers interested in career opportunities, placement drives, and internships at Next IT Career can complete this form."
   },
   {
     question: "Where will my submitted data be sent?",
-    answer: "Your candidate profile and academic details will be securely sent to the Next IT Solutions candidate database in our central Google Sheet for immediate screening."
+    answer: "Your candidate profile and academic details will be securely sent to the Next IT Career candidate database in our central Google Sheet for immediate screening."
   },
   {
     question: "What happens after I submit my application?",
-    answer: "Our recruitment team will review your profile against active job openings and internship requirements at Next IT Solutions. Shortlisted candidates will be contacted via email or phone."
+    answer: "Our recruitment team will review your profile against active job openings and internship requirements at Next IT Career. Shortlisted candidates will be contacted via email or phone."
   },
   {
     question: "Is there any fee required for profile registration?",
-    answer: "No. Student profile registration and job applications via Placemein for Next IT Solutions are 100% free of cost."
+    answer: "No. Student profile registration and job applications via Placemein for Next IT Career are 100% free of cost."
   }
 ];
 
@@ -182,7 +183,7 @@ const NextITCareersPage: React.FC = () => {
 
             {/* Subtext */}
             <p className="mt-5 text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-              Official candidate profile registration and job application portal built for <span className="font-semibold text-[#4B0082] dark:text-purple-300">Next IT Career</span> students. Complete your application below to get matched with active tech roles and hiring drives.
+              Welcome to the official recruitment and profile creation portal for <span className="font-bold text-[#4B0082] dark:text-purple-300">Next IT Career</span>. Complete your application below to get matched with active tech roles and campus drives.
             </p>
 
             {/* Highlights Strip */}
@@ -193,7 +194,7 @@ const NextITCareersPage: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-gray-900 dark:text-white">Direct Drives</p>
-                  <p className="text-[11px] text-gray-400">Next IT hiring</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400">Next IT Placements</p>
                 </div>
               </div>
 
@@ -203,7 +204,7 @@ const NextITCareersPage: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-gray-900 dark:text-white">All Branches</p>
-                  <p className="text-[11px] text-gray-400">Engineering & Tech</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400">Engineering & Tech</p>
                 </div>
               </div>
 
@@ -212,8 +213,8 @@ const NextITCareersPage: React.FC = () => {
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-900 dark:text-white">Verified Data</p>
-                  <p className="text-[11px] text-gray-400">Secure submission</p>
+                  <p className="text-xs font-bold text-gray-900 dark:text-white">Verified Companies</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400">Secured Careers</p>
                 </div>
               </div>
 
@@ -222,8 +223,8 @@ const NextITCareersPage: React.FC = () => {
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-900 dark:text-white">Fast Review</p>
-                  <p className="text-[11px] text-gray-400">Active screening</p>
+                  <p className="text-xs font-bold text-gray-900 dark:text-white">Faster Hiring Process</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400">Rapid screening</p>
                 </div>
               </div>
             </div>
